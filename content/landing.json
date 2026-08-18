@@ -1,7 +1,9 @@
 {
   "app": {
     "url": "https://d3l1n17hqtm5w.cloudfront.net",
-    "contactEmail": "marvi.groundwater@gmail.com"
+    "contactEmail": "marvi.groundwater@gmail.com",
+    "appleAppId": "6783644298",
+    "androidPackage": "org.marvi.mywell"
   },
   "hero": {
     "title": "Water, made visible for your community",

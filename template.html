@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MyWell — Community water monitoring</title>
   <link rel="icon" type="image/png" href="assets/logo/mywell-logo.png" />
+  <!-- iOS Safari's native banner: shows OPEN when the app is installed,
+       GET (App Store) when it isn't — the platform's own open-or-install UI. -->
+  <meta name="apple-itunes-app" content="app-id=@@APPLE_APP_ID@@" />
   <meta
     name="description"
     content="MyWell is a free, community-focused water monitoring and learning app built on the MARVI approach. Record groundwater, rainfall and water-quality readings, see them on a map, and explore trends over time."
@@ -326,6 +329,29 @@
     .footer-brand img { height: 34px; margin-bottom: 10px; }
     .footer-legal { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--line); font-size: .85rem; }
 
+    /* Mobile smart bar: open in the app, or stay in the browser */
+    .app-bar {
+      position: fixed; left: 12px; right: 12px;
+      bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+      z-index: 50;
+      display: none;
+      align-items: center; gap: 12px;
+      background: #fff; border: 1px solid var(--line); border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(14,74,99,.22);
+      padding: 12px 14px;
+    }
+    .app-bar.show { display: flex; }
+    .app-bar img { width: 44px; height: 44px; border-radius: 10px; flex: none; }
+    .app-bar .txt { flex: 1; min-width: 0; }
+    .app-bar .txt strong { display: block; font-size: .95rem; }
+    .app-bar .txt span { font-size: .8rem; color: var(--muted); }
+    .app-bar .acts { display: flex; flex-direction: column; gap: 6px; flex: none; }
+    .app-bar .acts .btn { padding: 7px 14px; font-size: .88rem; }
+    .app-bar .stay {
+      background: none; border: none; padding: 4px;
+      color: var(--muted); font-size: .8rem; text-decoration: underline; cursor: pointer;
+    }
+
     /* calm water for those who ask for it */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -580,7 +606,76 @@
     </div>
   </footer>
 
+  <!-- Mobile smart bar. Hidden until the script confirms an Android/iOS
+       browser; a labeled tap, never an automatic redirect. -->
+  <div class="app-bar" id="app-bar">
+    <img src="assets/logo/mywell-logo.png" alt="" />
+    <div class="txt">
+      <strong>MyWell is better in the app</strong>
+      <span id="app-bar-sub">Open your stations with one tap.</span>
+    </div>
+    <div class="acts">
+      <a class="btn btn-primary" id="app-bar-open" href="#">Open the app</a>
+      <button class="stay" id="app-bar-stay" type="button">Continue in browser</button>
+    </div>
+  </div>
+
   <script>
+    // ── Open-in-app smart bar ────────────────────────────────────────────
+    // Mirrors the app's own OpenInAppButton logic:
+    //  - Android: a package-targeted intent:// URL. App installed → opens it;
+    //    not installed → browser_fallback_url loads instead, NO error dialog.
+    //  - iOS: the mywell:// scheme behind a labeled button (an automatic
+    //    redirect would show a "cannot open page" error to non-installers),
+    //    with the App Store as the second action. Safari additionally shows
+    //    its own native OPEN/GET banner via the apple-itunes-app meta tag.
+    (function () {
+      var APP_HOST = "@@APP_HOST@@";
+      var ANDROID_PACKAGE = "@@ANDROID_PACKAGE@@";
+      var ANDROID_FALLBACK = "@@ANDROID_FALLBACK@@";
+      var IOS_STORE = "@@IOS_STORE@@";
+      var KEY = "mywell.appbar.dismissed";
+
+      function mobileOS() {
+        var ua = navigator.userAgent || "";
+        if (/android/i.test(ua)) return "android";
+        if (/iphone|ipod|ipad/i.test(ua)) return "ios";
+        // iPadOS 13+ Safari reports a desktop UA; distinguish by touch.
+        if (/Macintosh/.test(ua) && "ontouchend" in document) return "ios";
+        return null;
+      }
+
+      var os = mobileOS();
+      var bar = document.getElementById("app-bar");
+      if (!os || !bar) return;
+      try { if (localStorage.getItem(KEY)) return; } catch (e) { /* ignore */ }
+
+      var open = document.getElementById("app-bar-open");
+      if (os === "android") {
+        // /stations/ matches the app's App-Links filter, so the intent
+        // resolves to MyWell when installed; otherwise the fallback loads.
+        open.href =
+          "intent://" + APP_HOST + "/stations/" +
+          "#Intent;scheme=https;package=" + ANDROID_PACKAGE +
+          ";S.browser_fallback_url=" + encodeURIComponent(ANDROID_FALLBACK) + ";end";
+      } else {
+        open.href = "mywell://home";
+        // Second action on iOS: the App Store, for readers without the app.
+        var store = document.createElement("a");
+        store.className = "btn btn-outline";
+        store.href = IOS_STORE;
+        store.textContent = "App Store";
+        open.parentNode.insertBefore(store, open.nextSibling);
+        document.getElementById("app-bar-sub").textContent =
+          "Open the app — or get it free on the App Store.";
+      }
+      document.getElementById("app-bar-stay").addEventListener("click", function () {
+        try { localStorage.setItem(KEY, "1"); } catch (e) { /* ignore */ }
+        bar.classList.remove("show");
+      });
+      bar.classList.add("show");
+    })();
+
     // Tab router: #home / #features / #how-it-works / #data / #faq map to
     // panels; anything else (e.g. #get-the-app) falls back to the Overview
     // panel and then scrolls to the matching in-panel anchor if one exists.

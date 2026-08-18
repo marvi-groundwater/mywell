@@ -87,8 +87,23 @@ function badge(icon, platformLine, url, comingSoonHref) {
 }
 
 const email = content.app.contactEmail;
+const appUrl = String(content.app.url).replace(/\/+$/, "");
+// The smart bar's not-installed fallbacks: Android prefers the Play listing
+// once it exists, else the web app; iOS prefers the App Store listing, else
+// a generic id link derived from appleAppId.
+const androidFallback = content.store.playUrl?.startsWith("https://")
+  ? content.store.playUrl
+  : `${appUrl}/login`;
+const iosStore = content.store.iosUrl?.startsWith("https://")
+  ? content.store.iosUrl
+  : `https://apps.apple.com/app/id${content.app.appleAppId}`;
 const slots = {
-  APP_URL: esc(String(content.app.url).replace(/\/+$/, "")),
+  APP_URL: esc(appUrl),
+  APP_HOST: esc(new URL(appUrl).host),
+  APPLE_APP_ID: esc(content.app.appleAppId),
+  ANDROID_PACKAGE: esc(content.app.androidPackage),
+  ANDROID_FALLBACK: esc(androidFallback),
+  IOS_STORE: esc(iosStore),
   CONTACT_EMAIL: esc(email),
   HERO_TITLE: heroTitle(content.hero),
   HERO_TAGLINE: esc(content.hero.tagline),

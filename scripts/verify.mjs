@@ -22,6 +22,13 @@ for (const m of html.matchAll(/(?:src|href)="(assets\/[^"]+)"/g)) {
 //    path that would 404 on GitHub Pages.
 if (!/href="https:\/\/[^"]+\/login"/.test(html)) errors.push("no absolute app /login link");
 
+// 3b. The open-in-app affordances are wired: iOS Safari's OPEN/GET banner
+//     meta carries a numeric id, and the smart bar's intent URL is complete.
+if (!/<meta name="apple-itunes-app" content="app-id=\d+"/.test(html))
+  errors.push("apple-itunes-app meta missing or non-numeric");
+if (!html.includes("S.browser_fallback_url=")) errors.push("smart bar intent fallback missing");
+if (!/var ANDROID_PACKAGE = "[a-z][\w.]+"/.test(html)) errors.push("android package not substituted");
+
 // 4. The CMS is present and pointed at this repo.
 const cms = join(OUT, "admin");
 for (const f of ["index.html", "config.yml", "sveltia-cms.js"]) {
