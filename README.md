@@ -5,8 +5,8 @@ water-monitoring app: a single static page, published on GitHub Pages, with
 its content managed through a git-based CMS — the same setup as the MARVI
 website.
 
-**Live site:** https://marvi-groundwater.github.io/mywell/
-**Content admin (CMS):** https://marvi-groundwater.github.io/mywell/admin/
+**Live site:** https://mywell.au/
+**Content admin (CMS):** https://mywell.au/admin/
 
 ## How it fits together
 

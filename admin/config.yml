@@ -18,8 +18,8 @@ backend:
   branch: main
   auth_methods: [token]
 
-site_url: https://marvi-groundwater.github.io/mywell/
-display_url: https://marvi-groundwater.github.io/mywell/
+site_url: https://mywell.au/
+display_url: https://mywell.au/
 
 media_folder: "assets/uploads"
 public_folder: "assets/uploads"
