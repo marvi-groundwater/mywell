@@ -7,14 +7,26 @@
     "title": "Water, made visible for your community",
     "highlight": "visible",
     "tagline": "MyWell is a free, community-focused water monitoring and learning app, built on the MARVI approach to participatory groundwater management. Record readings from wells, rain gauges and other local water sources — then see them on a map and watch the trends.",
-    "note": "Works in your browser today — mobile apps for Android and iOS are on the way.",
+    "note": "Works in your browser and on iPhone today — the Android app is on the way.",
     "image": "assets/screenshots/home.jpg"
   },
   "stats": [
-    { "n": "65,000+", "l": "monitoring stations" },
-    { "n": "13 million+", "l": "readings on record" },
-    { "n": "60+", "l": "languages" },
-    { "n": "Free", "l": "for everyone" }
+    {
+      "n": "65,000+",
+      "l": "monitoring stations"
+    },
+    {
+      "n": "13 million+",
+      "l": "readings on record"
+    },
+    {
+      "n": "60+",
+      "l": "languages"
+    },
+    {
+      "n": "Free",
+      "l": "for everyone"
+    }
   ],
   "features": [
     {
@@ -64,9 +76,18 @@
     }
   ],
   "shots": [
-    { "image": "assets/screenshots/map.jpg", "caption": "Find stations anywhere on the map" },
-    { "image": "assets/screenshots/record-visit.jpg", "caption": "Record a visit in under a minute" },
-    { "image": "assets/screenshots/trend.jpg", "caption": "Watch trends build over the seasons" }
+    {
+      "image": "assets/screenshots/map.jpg",
+      "caption": "Find stations anywhere on the map"
+    },
+    {
+      "image": "assets/screenshots/record-visit.jpg",
+      "caption": "Record a visit in under a minute"
+    },
+    {
+      "image": "assets/screenshots/trend.jpg",
+      "caption": "Watch trends build over the seasons"
+    }
   ],
   "steps": [
     {
@@ -114,8 +135,8 @@
   ],
   "store": {
     "playUrl": "",
-    "iosUrl": "",
-    "note": "The mobile apps are currently in pre-release testing. Want early access? Tap a badge (or email us) and we'll invite you to the tester programme. Meanwhile, the web app has every feature."
+    "iosUrl": "https://apps.apple.com/app/id6783644298",
+    "note": "MyWell for iPhone is on the App Store today. The Android app is in pre-release testing — tap its badge (or email us) and we'll invite you to the tester programme. The web app has every feature too."
   },
   "faq": [
     {
