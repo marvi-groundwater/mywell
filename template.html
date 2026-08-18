@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MyWell — Community water monitoring</title>
+  <link rel="icon" type="image/png" href="assets/logo/mywell-logo.png" />
+  <meta
+    name="description"
+    content="MyWell is a free, community-focused water monitoring and learning app built on the MARVI approach. Record groundwater, rainfall and water-quality readings, see them on a map, and explore trends over time."
+  />
+  <style>
+    :root {
+      --brand: #1F7BA8;
+      --brand-dark: #16607f;
+      --brand-deep: #0e4a63;
+      --teal: #0F7A6F;      /* the app's action colour — pairs with the umbrella logo */
+      --ink: #1a2733;
+      --muted: #5b6b78;
+      --wash: #f2f7fa;
+      --line: #dbe6ec;
+      --water-grad: linear-gradient(135deg, var(--brand) 0%, var(--teal) 100%);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      line-height: 1.6;
+      background: #fff;
+    }
+    a { color: var(--brand); }
+    img { max-width: 100%; }
+    .wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+
+    .btn {
+      display: inline-block; padding: 10px 22px; border-radius: 8px;
+      font-weight: 600; text-decoration: none; text-align: center;
+    }
+    .btn-primary { background: var(--water-grad); color: #fff; transition: filter .15s ease, transform .15s ease; }
+    .btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .btn-outline { border: 2px solid var(--brand); color: var(--brand); }
+    .btn-outline:hover { background: var(--wash); }
+    .btn-ghost { border: 2px solid rgba(255,255,255,.7); color: #fff; }
+    .btn-ghost:hover { background: rgba(255,255,255,.12); }
+    .btn-small { padding: 7px 16px; font-size: .93rem; }
+
+    /* ── Sticky header with tab nav ─────────────────────────────── */
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-row {
+      display: flex; align-items: center; gap: 22px; padding: 10px 0;
+    }
+    .header-row > a img { height: 38px; width: auto; display: block; }
+    .tabs {
+      display: flex; gap: 4px; flex: 1;
+      overflow-x: auto; scrollbar-width: none;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab-link {
+      padding: 7px 14px; border-radius: 999px; white-space: nowrap;
+      text-decoration: none; color: var(--ink); font-weight: 500; font-size: .95rem;
+    }
+    .tab-link:hover { background: var(--wash); }
+    .tab-link[aria-current="page"] { background: var(--brand); color: #fff; }
+    .header-cta { display: flex; gap: 10px; align-items: center; }
+    @media (max-width: 760px) {
+      .header-row { flex-wrap: wrap; }
+      .header-row > a { order: 1; }
+      .header-cta { order: 2; margin-left: auto; }
+      .tabs { order: 3; flex-basis: 100%; padding-bottom: 6px; }
+    }
+
+    /* ── Tab panels ─────────────────────────────────────────────── */
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* ── Hero: a light water scene ──────────────────────────────── */
+    .hero {
+      position: relative; overflow: hidden;
+      background: linear-gradient(180deg, var(--wash) 0%, #ffffff 100%);
+      padding: 52px 0 96px;
+    }
+    /* soft colour pools, like light through water */
+    .hero::before, .hero::after {
+      content: ""; position: absolute; border-radius: 50%;
+      filter: blur(70px); pointer-events: none;
+    }
+    .hero::before {
+      width: 420px; height: 420px; left: -120px; top: -140px;
+      background: radial-gradient(circle, rgba(31,123,168,.28), transparent 70%);
+      animation: pool 16s ease-in-out infinite alternate;
+    }
+    .hero::after {
+      width: 460px; height: 460px; right: -140px; bottom: -80px;
+      background: radial-gradient(circle, rgba(15,122,111,.24), transparent 70%);
+      animation: pool 20s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes pool {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(30px, 18px) scale(1.08); }
+    }
+    .hero .wrap { position: relative; z-index: 2; }
+
+    /* gentle rain — the umbrella logo's drops, falling softly */
+    .drops { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+    .drops i {
+      position: absolute; top: -24px;
+      width: 11px; height: 11px;
+      background: var(--brand);
+      border-radius: 0 50% 50% 50%;
+      transform: rotate(45deg);
+      opacity: 0;
+      animation: fall linear infinite;
+    }
+    .drops i:nth-child(2n) { background: var(--teal); width: 9px; height: 9px; }
+    @keyframes fall {
+      0%   { transform: translateY(0) rotate(45deg); opacity: 0; }
+      8%   { opacity: .18; }
+      85%  { opacity: .14; }
+      100% { transform: translateY(78vh) rotate(45deg); opacity: 0; }
+    }
+
+    /* layered waves along the hero's waterline */
+    .sea {
+      position: absolute; left: 0; right: 0; bottom: -2px; height: 84px;
+      pointer-events: none; z-index: 1;
+    }
+    .sea svg {
+      position: absolute; bottom: 0; left: 0;
+      width: 200%; height: 100%;
+      display: block;
+    }
+    .sea .w1 { animation: drift 18s linear infinite; opacity: .35; }
+    .sea .w2 { animation: drift 27s linear infinite reverse; opacity: .22; }
+    .sea .w3 { animation: drift 40s linear infinite; opacity: .6; }
+    @keyframes drift {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(.4deg); }
+      50%      { transform: translateY(-9px) rotate(-.4deg); }
+    }
+    .hero-phone { animation: bob 7s ease-in-out infinite; }
+
+    .hero-grid {
+      display: grid; grid-template-columns: 1.25fr 1fr;
+      gap: 40px; align-items: center;
+    }
+    .hero h1 {
+      color: var(--brand);
+      font-size: clamp(1.9rem, 4.5vw, 2.9rem);
+      margin: 0 0 12px;
+      line-height: 1.15;
+    }
+    .hero .tagline {
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      color: var(--muted);
+      margin: 0 0 26px;
+    }
+    .grad {
+      background: var(--water-grad);
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent;
+    }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-note { margin-top: 14px; font-size: .9rem; color: var(--muted); }
+    @media (max-width: 800px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-ctas { justify-content: center; }
+    }
+
+    /* Phone-framed app screenshots */
+    .phone {
+      display: block;
+      width: 100%; max-width: 300px;
+      border-radius: 30px;
+      border: 9px solid var(--brand-deep);
+      box-shadow: 0 22px 44px rgba(14,74,99,.28);
+      background: var(--brand-deep);
+    }
+    .hero-phone { margin: 0 auto; }
+    .shots {
+      display: flex; gap: 28px; justify-content: center; flex-wrap: wrap;
+    }
+    .shot { text-align: center; margin: 0; }
+    .shot .phone { max-width: 240px; }
+    .shot figcaption { margin-top: 10px; font-size: .92rem; color: var(--muted); }
+
+    /* Stat strip */
+    .stats {
+      display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+      padding: 26px 0 8px;
+    }
+    .stat {
+      background: #fff; border: 1px solid var(--line); border-radius: 10px;
+      padding: 14px 26px; min-width: 170px;
+    }
+    .stat .n { color: var(--brand); font-size: 1.5rem; font-weight: 700; line-height: 1.2; }
+    .stat .l { color: var(--muted); font-size: .88rem; }
+
+    /* ── Sections ───────────────────────────────────────────────── */
+    section { padding: 44px 0; }
+    section h2 { color: var(--brand); font-size: 1.55rem; margin: 0 0 6px; text-align: center; }
+    /* a little water squiggle under every heading */
+    section h2::after {
+      content: ""; display: block; width: 88px; height: 8px; margin: 8px auto 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 8"><path d="M1 4 Q12 0 23 4 T45 4 T67 4 T89 4" fill="none" stroke="%230F7A6F" stroke-width="2" stroke-linecap="round" opacity=".55"/></svg>') center / contain no-repeat;
+    }
+    .section-sub { text-align: center; color: var(--muted); max-width: 680px; margin: 0 auto 30px; }
+    .alt { background: var(--wash); }
+
+    /* soft rise-in on scroll (JS adds .reveal/.in; no-JS stays visible) */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    .features {
+      display: grid; gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .feature {
+      background: #fff; border: 1px solid var(--line); border-radius: 10px;
+      padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start;
+      transition: box-shadow .15s ease, transform .15s ease;
+    }
+    .feature:hover { box-shadow: 0 6px 18px rgba(31,123,168,.12); transform: translateY(-2px); }
+    .feature img {
+      width: 56px; height: 56px; object-fit: contain; flex: none;
+      border-radius: 8px; background: var(--wash);
+    }
+    .feature h3 { margin: 0 0 4px; font-size: 1.02rem; }
+    .feature p { margin: 0; font-size: .93rem; color: var(--muted); }
+
+    /* How it works */
+    .steps { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+    .step {
+      background: #fff; border: 1px solid var(--line); border-radius: 10px;
+      padding: 22px 20px; text-align: center; position: relative;
+    }
+    .step .num {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--brand); color: #fff; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .step img { width: 64px; height: 64px; object-fit: contain; margin-bottom: 10px; }
+    .step h3 { margin: 0 0 6px; font-size: 1.05rem; }
+    .step p { margin: 0; font-size: .92rem; color: var(--muted); }
+
+    /* Data tab */
+    .datasets { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .dataset {
+      background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 20px;
+    }
+    .dataset h3 { margin: 0 0 6px; font-size: 1.02rem; color: var(--brand-deep); }
+    .dataset p { margin: 0; font-size: .93rem; color: var(--muted); }
+    .flag { font-size: 1.3rem; margin-right: 6px; }
+
+    /* Get the app */
+    .stores { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
+    .store-badge {
+      display: flex; align-items: center; gap: 12px;
+      background: #111; color: #fff; text-decoration: none;
+      border-radius: 10px; padding: 10px 20px; min-width: 220px;
+    }
+    .store-badge svg { width: 28px; height: 28px; flex: none; }
+    .store-badge .lines { line-height: 1.25; text-align: left; }
+    .store-badge .small { font-size: .72rem; opacity: .85; display: block; }
+    .store-badge .big { font-size: 1.05rem; font-weight: 600; }
+    .store-note {
+      text-align: center; color: var(--muted); font-size: .92rem;
+      max-width: 560px; margin: 0 auto;
+    }
+
+    .audience { max-width: 720px; margin: 0 auto; text-align: center; }
+
+    /* FAQ */
+    .faq { max-width: 760px; margin: 0 auto; }
+    .faq details {
+      background: #fff; border: 1px solid var(--line); border-radius: 10px;
+      padding: 14px 20px; margin-bottom: 12px;
+    }
+    .faq summary {
+      cursor: pointer; font-weight: 600; list-style: none;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--brand); font-size: 1.3rem; flex: none; }
+    .faq details[open] summary::after { content: "–"; }
+    .faq details p { color: var(--muted); margin: 10px 0 2px; font-size: .95rem; }
+
+    /* CTA band — under the waterline */
+    .cta-band {
+      position: relative; overflow: hidden;
+      background: linear-gradient(120deg, var(--brand) 0%, var(--teal) 55%, var(--brand-deep) 100%);
+      color: #fff; text-align: center; padding: 64px 20px 46px;
+    }
+    .cta-band .sea { top: -2px; bottom: auto; height: 44px; transform: scaleY(-1); }
+    .cta-band .sea svg path { fill: #ffffff; }
+    .cta-band > *:not(.sea) { position: relative; z-index: 2; }
+    .cta-band h2 { color: #fff; margin: 0 0 8px; font-size: 1.6rem; }
+    .cta-band h2::after { display: none; }
+    .cta-band p { margin: 0 auto 22px; max-width: 560px; opacity: .92; }
+    .cta-band .btn-primary { background: #fff; color: var(--brand-deep); }
+    .cta-band .btn-primary:hover { background: var(--wash); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--line); padding: 34px 0 44px; font-size: .92rem; color: var(--muted); }
+    .footer-cols {
+      display: grid; gap: 26px;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+    @media (max-width: 700px) { .footer-cols { grid-template-columns: 1fr 1fr; } }
+    .footer-cols h4 { margin: 0 0 8px; color: var(--ink); font-size: .95rem; }
+    .footer-cols ul { list-style: none; margin: 0; padding: 0; }
+    .footer-cols li { margin-bottom: 6px; }
+    .footer-cols a { text-decoration: none; }
+    .footer-cols a:hover { text-decoration: underline; }
+    .footer-brand img { height: 34px; margin-bottom: 10px; }
+    .footer-legal { margin-top: 26px; padding-top: 16px; border-top: 1px solid var(--line); font-size: .85rem; }
+
+    /* calm water for those who ask for it */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+    @media print {
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap header-row">
+      <a href="#home" aria-label="MyWell home">
+        <img src="assets/logo/mywell-lockup.png" alt="MyWell" />
+      </a>
+      <nav class="tabs" aria-label="Site sections">
+        <a class="tab-link" href="#home">Overview</a>
+        <a class="tab-link" href="#features">Features</a>
+        <a class="tab-link" href="#how-it-works">How it works</a>
+        <a class="tab-link" href="#data">Data</a>
+        <a class="tab-link" href="#faq">FAQ</a>
+      </nav>
+      <div class="header-cta">
+        <a class="btn btn-outline btn-small" href="@@APP_URL@@/login">Sign in</a>
+        <a class="btn btn-primary btn-small" href="@@APP_URL@@/register">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ── Overview ─────────────────────────────────────────────── -->
+    <div class="panel" id="panel-home">
+      <div class="hero">
+        <div class="drops" aria-hidden="true">
+          <i style="left:6%;  animation-duration:11s; animation-delay:0s"></i>
+          <i style="left:16%; animation-duration:14s; animation-delay:4s"></i>
+          <i style="left:28%; animation-duration:12s; animation-delay:8s"></i>
+          <i style="left:47%; animation-duration:15s; animation-delay:2s"></i>
+          <i style="left:63%; animation-duration:11s; animation-delay:6s"></i>
+          <i style="left:76%; animation-duration:13s; animation-delay:1s"></i>
+          <i style="left:88%; animation-duration:16s; animation-delay:9s"></i>
+          <i style="left:94%; animation-duration:12s; animation-delay:5s"></i>
+        </div>
+        <div class="sea" aria-hidden="true">
+          <svg class="w1" viewBox="0 0 2400 84" preserveAspectRatio="none">
+            <path fill="#1F7BA8" d="M0,44 C150,74 300,14 450,44 S750,74 900,44 S1200,14 1350,44 S1650,74 1800,44 S2100,14 2250,44 L2400,44 L2400,84 L0,84 Z"/>
+          </svg>
+          <svg class="w2" viewBox="0 0 2400 84" preserveAspectRatio="none">
+            <path fill="#0F7A6F" d="M0,54 C200,24 400,74 600,54 S1000,24 1200,54 S1600,74 1800,54 S2200,24 2400,54 L2400,84 L0,84 Z"/>
+          </svg>
+          <svg class="w3" viewBox="0 0 2400 84" preserveAspectRatio="none">
+            <path fill="#ffffff" d="M0,64 C150,84 300,44 450,64 S750,84 900,64 S1200,44 1350,64 S1650,84 1800,64 S2100,44 2250,64 L2400,64 L2400,84 L0,84 Z"/>
+          </svg>
+        </div>
+        <div class="wrap">
+          <div class="hero-grid">
+            <div>
+              <h1>@@HERO_TITLE@@</h1>
+              <p class="tagline">@@HERO_TAGLINE@@</p>
+              <div class="hero-ctas">
+                <a class="btn btn-primary" href="@@APP_URL@@/register">Create a free account</a>
+                <a class="btn btn-outline" href="@@APP_URL@@/login">Sign in to the web app</a>
+              </div>
+              <p class="hero-note">@@HERO_NOTE@@</p>
+            </div>
+            <img class="phone hero-phone" src="@@HERO_IMAGE@@"
+                 alt="MyWell home screen showing a monitoring summary and station map" />
+          </div>
+          <div class="stats">
+@@STATS@@
+          </div>
+        </div>
+      </div>
+
+      <section>
+        <div class="wrap">
+          <h2>One place for your local water story</h2>
+          <p class="section-sub">
+            While its foundation is groundwater, MyWell supports broader local water
+            monitoring — rainfall, surface water, water quality and water storage systems.
+          </p>
+          <div class="features">
+@@OVERVIEW_FEATURES@@
+          </div>
+          <p style="text-align:center; margin-top:24px;">
+            <a class="tab-link" href="#features" style="border:2px solid var(--brand); font-weight:600;">See all features →</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="alt">
+        <div class="wrap">
+          <h2>See it in action</h2>
+          <p class="section-sub">
+            The same app, from the field to the big picture — pick your stations on
+            the map, record a visit, and watch the trend build.
+          </p>
+          <div class="shots">
+@@SHOTS@@
+          </div>
+        </div>
+      </section>
+
+      <section id="get-the-app">
+        <div class="wrap">
+          <h2>Get the app</h2>
+          <p class="section-sub">
+            MyWell runs in any modern browser — and as a native app on Android and iOS.
+          </p>
+          <div class="stores">
+@@STORE_BADGES@@
+          </div>
+          <p class="store-note">@@STORE_NOTE@@</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap audience">
+          <h2>Who is it for?</h2>
+          <p>@@AUDIENCE@@</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ── Features ─────────────────────────────────────────────── -->
+    <div class="panel" id="panel-features">
+      <section>
+        <div class="wrap">
+          <h2>Everything you need to monitor local water</h2>
+          <p class="section-sub">
+            From a single village well to a national dataset — the same simple tools.
+          </p>
+          <div class="features">
+@@FEATURES@@
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ── How it works ─────────────────────────────────────────── -->
+    <div class="panel" id="panel-how-it-works">
+      <section>
+        <div class="wrap">
+          <h2>How it works</h2>
+          <p class="section-sub">
+            Four steps from "we should watch that well" to a living record your
+            whole community can read.
+          </p>
+          <div class="steps">
+@@STEPS@@
+          </div>
+          <p style="text-align:center; margin-top:28px;">
+            <a class="btn btn-primary" href="@@APP_URL@@/register">Start with step 1 — it's free</a>
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ── Data ─────────────────────────────────────────────────── -->
+    <div class="panel" id="panel-data">
+      <section>
+        <div class="wrap">
+          <h2>A shared, public water dataset</h2>
+          <p class="section-sub">
+            Every MyWell reading joins a shared dataset that anyone with an account can
+            explore — usable for non-commercial education, research and community water
+            management. Community records sit alongside major public datasets.
+          </p>
+          <div class="datasets">
+@@DATASETS@@
+          </div>
+          <p class="section-sub" style="margin-top:26px;">
+            Personal details stay private: who recorded a reading is visible only inside
+            their own organisation. See the
+            <a href="@@APP_URL@@/privacy-policy.html">privacy policy</a> for the fine print.
+          </p>
+          <p style="text-align:center;">
+            <a class="btn btn-primary" href="@@APP_URL@@/register">Create an account to explore the data</a>
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ── FAQ ──────────────────────────────────────────────────── -->
+    <div class="panel" id="panel-faq">
+      <section>
+        <div class="wrap">
+          <h2>Frequently asked questions</h2>
+          <p class="section-sub">Short answers to the questions we hear most.</p>
+          <div class="faq">
+@@FAQ@@
+          </div>
+          <p class="section-sub" style="margin-top:22px;">
+            Something else? Email
+            <a href="mailto:@@CONTACT_EMAIL@@">@@CONTACT_EMAIL@@</a>
+            — we're happy to help.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ── CTA band (all tabs) ──────────────────────────────────── -->
+    <div class="cta-band">
+      <div class="sea" aria-hidden="true">
+        <svg class="w3" viewBox="0 0 2400 84" preserveAspectRatio="none">
+          <path fill="#ffffff" d="M0,64 C150,84 300,44 450,64 S750,84 900,64 S1200,44 1350,64 S1650,84 1800,64 S2100,44 2250,64 L2400,64 L2400,84 L0,84 Z"/>
+        </svg>
+      </div>
+      <h2>@@CTA_TITLE@@</h2>
+      <p>@@CTA_SUB@@</p>
+      <a class="btn btn-primary" href="@@APP_URL@@/register">Create a free account</a>
+      &nbsp;
+      <a class="btn btn-ghost" href="@@APP_URL@@/login">Sign in</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap footer-cols">
+      <div class="footer-brand">
+        <img src="assets/logo/mywell-lockup.png" alt="MyWell" />
+        <p>MyWell for Water Sustainability — a free, community-focused water monitoring and learning app, built on the MARVI approach.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#data">Data</a></li>
+          <li><a href="@@APP_URL@@/login">Sign in</a></li>
+          <li><a href="@@APP_URL@@/register">Create account</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="@@APP_URL@@/support.html">Help &amp; support</a></li>
+          <li><a href="mailto:@@CONTACT_EMAIL@@">Contact us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="@@APP_URL@@/privacy-policy.html">Privacy policy</a></li>
+          <li><a href="@@APP_URL@@/terms">Terms of use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-legal">
+      MyWell for Water Sustainability — built on the MARVI approach.
+    </div>
+  </footer>
+
+  <script>
+    // Tab router: #home / #features / #how-it-works / #data / #faq map to
+    // panels; anything else (e.g. #get-the-app) falls back to the Overview
+    // panel and then scrolls to the matching in-panel anchor if one exists.
+    (function () {
+      var TABS = ["home", "features", "how-it-works", "data", "faq"];
+      function show() {
+        var hash = (location.hash || "#home").slice(1);
+        var tab = TABS.indexOf(hash) !== -1 ? hash : "home";
+        document.querySelectorAll(".panel").forEach(function (p) {
+          p.classList.toggle("active", p.id === "panel-" + tab);
+        });
+        document.querySelectorAll(".tab-link").forEach(function (a) {
+          if (a.getAttribute("href") === "#" + tab) a.setAttribute("aria-current", "page");
+          else a.removeAttribute("aria-current");
+        });
+        if (TABS.indexOf(hash) !== -1) {
+          window.scrollTo({ top: 0 });
+        } else {
+          var target = document.getElementById(hash);
+          if (target) target.scrollIntoView();
+        }
+      }
+      window.addEventListener("hashchange", show);
+      show();
+
+      // Soft rise-in for cards as they scroll into view. Feature-detected and
+      // motion-preference-aware; without either, everything is simply visible.
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if ("IntersectionObserver" in window && !reduced) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.15 });
+        document.querySelectorAll(".feature, .step, .dataset, .stat, .shot, .faq details").forEach(function (el, i) {
+          el.classList.add("reveal");
+          el.style.transitionDelay = (i % 4) * 60 + "ms";
+          io.observe(el);
+        });
+        // Safety net: anything the observer never saw (print, snapshotting,
+        // odd embedders) becomes visible after a few seconds regardless.
+        setTimeout(function () {
+          document.querySelectorAll(".reveal:not(.in)").forEach(function (el) { el.classList.add("in"); });
+        }, 4000);
+      }
+    })();
+  </script>
+</body>
+</html>

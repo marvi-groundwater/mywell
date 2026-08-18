@@ -1,0 +1,155 @@
+{
+  "app": {
+    "url": "https://d3l1n17hqtm5w.cloudfront.net",
+    "contactEmail": "marvi.groundwater@gmail.com"
+  },
+  "hero": {
+    "title": "Water, made visible for your community",
+    "highlight": "visible",
+    "tagline": "MyWell is a free, community-focused water monitoring and learning app, built on the MARVI approach to participatory groundwater management. Record readings from wells, rain gauges and other local water sources — then see them on a map and watch the trends.",
+    "note": "Works in your browser today — mobile apps for Android and iOS are on the way.",
+    "image": "assets/screenshots/home.jpg"
+  },
+  "stats": [
+    { "n": "65,000+", "l": "monitoring stations" },
+    { "n": "13 million+", "l": "readings on record" },
+    { "n": "60+", "l": "languages" },
+    { "n": "Free", "l": "for everyone" }
+  ],
+  "features": [
+    {
+      "image": "assets/illustrations/water-well.webp",
+      "title": "Stations for every source",
+      "text": "Wells, boreholes, rain gauges, check dams, rivers, springs, reservoirs, rainwater tanks and more — with photographs, notes and locations."
+    },
+    {
+      "image": "assets/illustrations/rainfall.webp",
+      "title": "Field-ready recording",
+      "text": "Log groundwater levels, rainfall, water quality, surface water and storage readings in seconds, right at the station."
+    },
+    {
+      "image": "assets/illustrations/lake.webp",
+      "title": "Interactive map",
+      "text": "Every station on one map. Draw a monitoring area to focus on the wells, gauges and dams that matter to you."
+    },
+    {
+      "image": "assets/illustrations/river.webp",
+      "title": "Trends and comparisons",
+      "text": "Compare current and historical measurements with simple charts, summaries and seasonal patterns."
+    },
+    {
+      "image": "assets/illustrations/water-quality.png",
+      "title": "Water-quality safe bands",
+      "text": "Quality readings are charted against safe-range guidance, so out-of-range values stand out immediately."
+    },
+    {
+      "image": "assets/illustrations/hand-pump.webp",
+      "title": "QR codes on stations",
+      "text": "Print a QR code for a station; scanning it opens that station directly in the app — perfect for shared field sites."
+    },
+    {
+      "image": "assets/illustrations/farm-pond.webp",
+      "title": "Teams and organisations",
+      "text": "Work as a group: organisations manage their own members, stations and data, with clear roles for contributors and viewers."
+    },
+    {
+      "image": "assets/illustrations/check-dam.webp",
+      "title": "Bulk data upload",
+      "text": "Bring existing records with you — template-based file uploads move whole station histories into MyWell."
+    },
+    {
+      "image": "assets/illustrations/village-pond.webp",
+      "title": "60+ languages",
+      "text": "The whole app — menus, forms, guided tours — is available in more than sixty languages."
+    }
+  ],
+  "shots": [
+    { "image": "assets/screenshots/map.jpg", "caption": "Find stations anywhere on the map" },
+    { "image": "assets/screenshots/record-visit.jpg", "caption": "Record a visit in under a minute" },
+    { "image": "assets/screenshots/trend.jpg", "caption": "Watch trends build over the seasons" }
+  ],
+  "steps": [
+    {
+      "image": "assets/illustrations/borewell.webp",
+      "title": "Create a free account",
+      "text": "Sign up with your name and email. New members can record data straight away, and a built-in tour shows you around."
+    },
+    {
+      "image": "assets/illustrations/water-well.webp",
+      "title": "Add your stations",
+      "text": "Register the wells, rain gauges, dams or springs you monitor — name, location, type, photo. Each gets its own page and code."
+    },
+    {
+      "image": "assets/illustrations/rainfall.webp",
+      "title": "Record readings",
+      "text": "On each visit, log the water level, rainfall or quality readings — with photos and notes if you like."
+    },
+    {
+      "image": "assets/illustrations/river.webp",
+      "title": "Watch the trends",
+      "text": "Charts and summaries build up automatically. Compare seasons, spot declines early, and share the picture with your community."
+    }
+  ],
+  "datasets": [
+    {
+      "flag": "🇦🇺",
+      "title": "Australia — groundwater",
+      "text": "Bureau of Meteorology bores from the Global Groundwater Monitoring Network — about 25,000 wells with decades of water-level history."
+    },
+    {
+      "flag": "🇮🇳",
+      "title": "India — groundwater",
+      "text": "Central Ground Water Board stations via the Global Groundwater Monitoring Network — about 40,000 wells with quarterly readings."
+    },
+    {
+      "flag": "🇦🇺",
+      "title": "Australia — rivers",
+      "text": "WaterNSW surface-water gauges, with millions of river-level readings across New South Wales."
+    },
+    {
+      "flag": "🌏",
+      "title": "Your community",
+      "text": "Readings from farmers, volunteers, schools and researchers — the MARVI citizen-science record that started it all, growing every day."
+    }
+  ],
+  "store": {
+    "playUrl": "",
+    "iosUrl": "",
+    "note": "The mobile apps are currently in pre-release testing. Want early access? Tap a badge (or email us) and we'll invite you to the tester programme. Meanwhile, the web app has every feature."
+  },
+  "faq": [
+    {
+      "q": "How much does MyWell cost?",
+      "a": "Nothing. MyWell is a free, community-focused app developed through the MARVI project for education, citizen science and community water management."
+    },
+    {
+      "q": "Can I use it on both my phone and a computer?",
+      "a": "Yes — the same account works in the web app and the mobile app, and your stations and readings stay in sync."
+    },
+    {
+      "q": "Who can see the data I record?",
+      "a": "Readings join a shared water-monitoring dataset that signed-in users can explore, but your personal details are visible only within your own organisation. Location of stations is part of the shared record; who recorded a reading is not public."
+    },
+    {
+      "q": "Do I need to be an expert?",
+      "a": "No. MyWell was built with farmers, students and community volunteers — a guided tour walks you through the app, and recording a reading takes under a minute."
+    },
+    {
+      "q": "I forgot my password — what do I do?",
+      "a": "Use \"Forgot password?\" on the sign-in screen and we'll email you a reset code."
+    },
+    {
+      "q": "Can I delete my account?",
+      "a": "Yes, at any time, directly in the app: Settings → Delete account. Your account and personal data are removed immediately."
+    },
+    {
+      "q": "I have existing records in spreadsheets — can I import them?",
+      "a": "Yes. MyWell has template-based bulk upload for stations and measurements, so existing histories can move in without retyping."
+    }
+  ],
+  "cta": {
+    "title": "Start making your water visible",
+    "subtitle": "Join farmers, schools, researchers and agencies already monitoring their local water with MyWell."
+  },
+  "audience": "MyWell is designed for farmers, community volunteers, schools, universities, researchers, non-government organisations and government agencies. It supports practical learning, citizen science and informed discussion about groundwater, rainfall, surface water and other local water resources."
+}

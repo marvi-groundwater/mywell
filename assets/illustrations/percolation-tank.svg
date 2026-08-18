@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384">
+  <!-- Percolation tank: earthen bund holding a shallow sheet of water,
+       small masonry outlet weir at one end. -->
+  <rect x="10" y="10" width="364" height="364" rx="86" fill="#FFFFFF" stroke="#DFE6EC" stroke-width="6"/>
+  <g stroke="#1F3A54" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+    <!-- backdrop field -->
+    <path d="M52 186 Q192 158 332 186 L332 306 Q192 336 52 306 Z" fill="#8CC63F"/>
+    <!-- water sheet -->
+    <path d="M76 216 Q192 190 308 216 L308 252 Q192 276 76 252 Z" fill="#5AAFE0"/>
+    <!-- earthen bund embankment (front) -->
+    <path d="M64 252 L320 252 L336 300 L48 300 Z" fill="#A9825A"/>
+    <!-- grass on the bund crest -->
+    <path d="M64 252 L320 252 L326 268 L58 268 Z" fill="#5E9E3E"/>
+    <!-- masonry outlet weir -->
+    <path d="M256 224 L300 224 L300 300 L256 300 Z" fill="#C9D2D8"/>
+    <path d="M264 252 L292 252 L292 300 L264 300 Z" fill="#9FB0BB"/>
+  </g>
+  <path d="M120 226 q16 -6 32 0" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.85"/>
+  <path d="M180 236 q16 -6 32 0" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" opacity="0.85"/>
+</svg>

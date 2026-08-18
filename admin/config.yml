@@ -1,0 +1,143 @@
+# Sveltia CMS for the MyWell landing site — same setup as the MARVI website.
+#
+# Editors sign in with a GitHub fine-grained personal access token
+# (Contents: read/write, this repository only). No OAuth app, no server.
+# auth_methods: [token] is load-bearing: without it Sveltia falls back to
+# Netlify's hosted OAuth client, which cannot work on GitHub Pages.
+#
+# GitHub caps fine-grained tokens at about a year. When one expires the CMS
+# simply stops saving, with no warning: issue a new one at
+# github.com/settings/personal-access-tokens and sign in again.
+#
+# Every field of content/landing.json is declared below — the CMS writes
+# exactly what this file describes, so an undeclared field would be silently
+# dropped on save. If you add a field to the JSON, add it here too.
+backend:
+  name: github
+  repo: marvi-groundwater/mywell
+  branch: main
+  auth_methods: [token]
+
+site_url: https://marvi-groundwater.github.io/mywell/
+display_url: https://marvi-groundwater.github.io/mywell/
+
+media_folder: "assets/uploads"
+public_folder: "assets/uploads"
+
+collections:
+  - name: "landing"
+    label: "Landing page"
+    files:
+      - name: "landing"
+        label: "Landing page"
+        file: "content/landing.json"
+        fields:
+          - label: "App links"
+            name: "app"
+            widget: "object"
+            collapsed: false
+            fields:
+              - label: "Web app URL"
+                name: "url"
+                widget: "string"
+                hint: "Where Sign in / Create account send people. The MyWell web app's address."
+              - label: "Contact email"
+                name: "contactEmail"
+                widget: "string"
+
+          - label: "Hero (front headline)"
+            name: "hero"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Headline", name: "title", widget: "string" }
+              - label: "Highlighted phrase"
+                name: "highlight"
+                widget: "string"
+                required: false
+                hint: "This part of the headline gets the blue-to-teal water gradient. Must appear in the headline word-for-word."
+              - { label: "Tagline", name: "tagline", widget: "text" }
+              - { label: "Small note under the buttons", name: "note", widget: "string" }
+              - { label: "Phone screenshot", name: "image", widget: "image" }
+
+          - label: "Stat cards"
+            name: "stats"
+            widget: "list"
+            summary: "{{fields.n}} — {{fields.l}}"
+            hint: "The figures under the headline. Keep claims honest — they are public."
+            fields:
+              - { label: "Figure", name: "n", widget: "string" }
+              - { label: "Label", name: "l", widget: "string" }
+
+          - label: "Features"
+            name: "features"
+            widget: "list"
+            summary: "{{fields.title}}"
+            hint: "The full grid on the Features tab. The 1st, 3rd and 4th also appear as the Overview preview."
+            fields:
+              - { label: "Illustration", name: "image", widget: "image" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+
+          - label: "See it in action (phone shots)"
+            name: "shots"
+            widget: "list"
+            summary: "{{fields.caption}}"
+            fields:
+              - { label: "Screenshot", name: "image", widget: "image" }
+              - { label: "Caption", name: "caption", widget: "string" }
+
+          - label: "How it works (steps)"
+            name: "steps"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Illustration", name: "image", widget: "image" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+
+          - label: "Datasets"
+            name: "datasets"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Flag / emoji", name: "flag", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+
+          - label: "App store badges"
+            name: "store"
+            widget: "object"
+            collapsed: false
+            fields:
+              - label: "Google Play listing URL"
+                name: "playUrl"
+                widget: "string"
+                required: false
+                hint: "Leave empty to show “Coming soon” (opens a tester-invite email). Paste the Play listing URL on launch day."
+              - label: "App Store listing URL"
+                name: "iosUrl"
+                widget: "string"
+                required: false
+                hint: "Leave empty to show “Coming soon” (opens a TestFlight-invite email)."
+              - { label: "Note under the badges", name: "note", widget: "text" }
+
+          - label: "FAQ"
+            name: "faq"
+            widget: "list"
+            summary: "{{fields.q}}"
+            fields:
+              - { label: "Question", name: "q", widget: "string" }
+              - { label: "Answer", name: "a", widget: "text" }
+
+          - label: "Bottom call-to-action band"
+            name: "cta"
+            widget: "object"
+            collapsed: false
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+
+          - label: "Who is it for?"
+            name: "audience"
+            widget: "text"

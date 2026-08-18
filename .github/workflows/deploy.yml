@@ -1,0 +1,52 @@
+name: Build and deploy
+
+# Renders content/landing.json into template.html → _site/, verifies the
+# output, and publishes to GitHub Pages. Every CMS save is a commit to main,
+# so every edit deploys itself.
+#
+# Requires Pages to be configured with Source: GitHub Actions.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deploys race; the newest content wins.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build static site
+        run: node scripts/build.mjs
+
+      - name: Verify built output
+        run: node scripts/verify.mjs
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

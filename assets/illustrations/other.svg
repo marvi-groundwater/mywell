@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 384">
+  <!-- Other: a friendly water droplet with a question badge — the user names
+       this kind of station themselves. -->
+  <rect x="10" y="10" width="364" height="364" rx="86" fill="#FFFFFF" stroke="#DFE6EC" stroke-width="6"/>
+  <g stroke="#1F3A54" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
+    <!-- droplet -->
+    <path d="M184 82 Q262 178 262 236 Q262 300 184 300 Q106 300 106 236 Q106 178 184 82 Z" fill="#5AAFE0"/>
+    <!-- highlight -->
+    <path d="M148 216 Q144 258 176 272" fill="none" stroke="#FFFFFF" stroke-width="10" opacity="0.85"/>
+    <!-- question badge -->
+    <circle cx="268" cy="272" r="44" fill="#8CC63F"/>
+  </g>
+  <path d="M252 258 Q252 244 268 244 Q284 244 284 258 Q284 270 268 274 L268 284" fill="none" stroke="#1F3A54" stroke-width="11" stroke-linecap="round"/>
+  <circle cx="268" cy="302" r="7" fill="#1F3A54"/>
+</svg>
