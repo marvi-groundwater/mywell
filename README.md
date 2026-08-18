@@ -1,6 +1,6 @@
 # MyWell — landing site
 
-The public front door for the [MyWell](https://d3l1n17hqtm5w.cloudfront.net)
+The public front door for the [MyWell](https://app.mywell.au)
 water-monitoring app: a single static page, published on GitHub Pages, with
 its content managed through a git-based CMS — the same setup as the MARVI
 website.
