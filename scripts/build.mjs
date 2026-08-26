@@ -58,6 +58,29 @@ const step = (s, i) => `            <div class="step">
               <p>${esc(s.text)}</p>
             </div>`;
 
+// A tutorial card. The video is self-hosted (CloudFront, same origin family as
+// the app) rather than embedded from YouTube, so the page pulls in no
+// third-party player and no tracking. preload="none" means nine videos on one
+// page cost nine HTTP requests for the poster images and nothing else until
+// somebody actually presses play.
+const tutorial = (t) => `            <figure class="tut">
+              <video
+                controls
+                preload="none"
+                playsinline
+                poster="${esc(t.poster)}"
+                aria-label="${esc(t.title)}">
+                <source src="${esc(t.src)}" type="video/mp4" />
+                ${t.captions ? `<track kind="captions" srclang="en" label="English" src="${esc(t.captions)}" default />` : ""}
+                Your browser cannot play this video.
+                <a href="${esc(t.src)}">Download it instead</a>.
+              </video>
+              <figcaption>
+                <h3>${esc(t.title)}<span class="dur">${esc(t.duration)}</span></h3>
+                <p>${esc(t.text)}</p>
+              </figcaption>
+            </figure>`;
+
 const dataset = (d) => `            <div class="dataset">
               <h3><span class="flag">${esc(d.flag)}</span>${esc(d.title)}</h3>
               <p>${esc(d.text)}</p>
@@ -117,6 +140,9 @@ const slots = {
   FEATURES: content.features.map(feature).join("\n"),
   SHOTS: content.shots.map(shot).join("\n"),
   STEPS: content.steps.map(step).join("\n"),
+  TUTORIALS: (content.tutorials?.items ?? []).map(tutorial).join("\n"),
+  TUTORIALS_TITLE: esc(content.tutorials?.title ?? ""),
+  TUTORIALS_SUB: esc(content.tutorials?.subtitle ?? ""),
   DATASETS: content.datasets.map(dataset).join("\n"),
   FAQ: content.faq.map(faq).join("\n"),
   STORE_BADGES: [

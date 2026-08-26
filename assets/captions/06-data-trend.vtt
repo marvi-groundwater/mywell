@@ -1,0 +1,245 @@
+WEBVTT
+
+1
+00:00:00.250 --> 00:00:05.170
+Every MyWell user can read every station's
+data, not just their own.
+
+2
+00:00:05.290 --> 00:00:09.898
+This tutorial is about how to get at it: pick
+an area on the map,
+
+3
+00:00:10.018 --> 00:00:13.018
+then look at its trend and its statistics.
+
+4
+00:00:13.850 --> 00:00:16.730
+Now we're on: Monitoring area.
+
+5
+00:00:16.850 --> 00:00:19.514
+This map covers the whole community.
+
+6
+00:00:19.634 --> 00:00:24.914
+A Monitoring Area is a saved group of stations
+you pick once and re-open anytime —
+
+7
+00:00:25.034 --> 00:00:28.298
+the controls here let you build and explore
+them.
+
+8
+00:00:29.117 --> 00:00:31.229
+Open a monitoring area.
+
+9
+00:00:31.349 --> 00:00:35.357
+A monitoring area is a saved set of stations
+you follow together.
+
+10
+00:00:35.477 --> 00:00:41.741
+We've opened the sample ‘Badgaon village’ area for
+you — see the map focus on just its stations.
+
+11
+00:00:41.861 --> 00:00:45.221
+Pick any area here to scope the whole page to
+it.
+
+12
+00:00:46.050 --> 00:00:47.826
+Filter by type.
+
+13
+00:00:47.946 --> 00:00:55.050
+Open Station type to show or hide each kind of
+station — groundwater wells, rainfall, check-dams,
+
+14
+00:00:55.170 --> 00:00:56.946
+rivers and more.
+
+15
+00:00:57.066 --> 00:00:59.418
+It doubles as the map legend.
+
+16
+00:01:00.250 --> 00:01:02.530
+Find specific stations.
+
+17
+00:01:02.650 --> 00:01:08.746
+Use Station to search by name or code and pick just
+the stations you want; the map narrows to them.
+
+18
+00:01:09.550 --> 00:01:11.326
+Build an area.
+
+19
+00:01:11.446 --> 00:01:17.494
+Actions is how you create an area: Pick
+stations one by one, Draw an area on the map,
+
+20
+00:01:17.614 --> 00:01:20.494
+or Select area by dragging a box.
+
+21
+00:01:20.614 --> 00:01:23.902
+Save it and it appears in My Monitoring Areas.
+
+22
+00:01:24.717 --> 00:01:26.541
+Now see its data.
+
+23
+00:01:26.661 --> 00:01:30.069
+Once an area is picked, this card appears.
+
+24
+00:01:30.189 --> 00:01:36.381
+Open Data trend for its readings charted over time,
+or Data statistics for a ranked breakdown.
+
+25
+00:01:36.501 --> 00:01:39.765
+Your own saved areas open the same way.
+
+26
+00:01:40.583 --> 00:01:43.271
+Now we're on: Data trend.
+
+27
+00:01:43.391 --> 00:01:47.879
+This page charts how readings change over time
+across a whole area.
+
+28
+00:01:47.999 --> 00:01:52.895
+It opens empty on purpose — you begin by
+choosing a Monitoring Area.
+
+29
+00:01:53.717 --> 00:01:55.733
+Your monitoring areas.
+
+30
+00:01:55.853 --> 00:01:59.069
+A monitoring area is a saved set of stations.
+
+31
+00:01:59.189 --> 00:02:04.709
+Open My Monitoring Areas to switch between
+“All stations” and any area you've saved,
+
+32
+00:02:04.829 --> 00:02:07.205
+or the built-in Example area.
+
+33
+00:02:08.017 --> 00:02:10.345
+One line, over time.
+
+34
+00:02:10.465 --> 00:02:16.993
+Once an area is chosen, Data trend draws its
+readings as a line, bar or area chart —
+
+35
+00:02:17.113 --> 00:02:19.801
+the shape of the water through the seasons.
+
+36
+00:02:19.921 --> 00:02:22.753
+Narrow it further with the filters above.
+
+37
+00:02:23.583 --> 00:02:25.359
+Read the chart.
+
+38
+00:02:25.479 --> 00:02:29.343
+Below the map, this panel charts the stations
+in view.
+
+39
+00:02:29.463 --> 00:02:36.711
+Pick a measurement type, time range and chart
+style (Line, Bar or Area) to explore the data.
+
+40
+00:02:37.517 --> 00:02:40.493
+Now we're on: Data statistics.
+
+41
+00:02:40.613 --> 00:02:47.261
+The same data as Data trend, shown as numbers
+instead of a line: a per-station table of averages,
+
+42
+00:02:47.381 --> 00:02:50.861
+highs and lows, with the map shaded to match.
+
+43
+00:02:51.683 --> 00:02:53.699
+Your monitoring areas.
+
+44
+00:02:53.819 --> 00:02:57.035
+A monitoring area is a saved set of stations.
+
+45
+00:02:57.155 --> 00:03:02.675
+Open My Monitoring Areas to switch between
+“All stations” and any area you've saved,
+
+46
+00:03:02.795 --> 00:03:05.171
+or the built-in Example area.
+
+47
+00:03:05.983 --> 00:03:08.071
+The numbers, ranked.
+
+48
+00:03:08.191 --> 00:03:15.655
+Data statistics answers 'which stations, and how
+much?' — a sortable table of each station's average,
+
+49
+00:03:15.775 --> 00:03:19.831
+highest and lowest values, with the map shaded
+to match.
+
+50
+00:03:20.650 --> 00:03:22.426
+Read the chart.
+
+51
+00:03:22.546 --> 00:03:26.410
+Below the map, this panel charts the stations
+in view.
+
+52
+00:03:26.530 --> 00:03:33.778
+Pick a measurement type, time range and chart
+style (Line, Bar or Area) to explore the data.
+
+53
+00:03:34.583 --> 00:03:36.527
+That is the whole page.
+
+54
+00:03:36.647 --> 00:03:41.303
+You can replay this tutorial any time from the
+Learning page inside the app.
+
+55
+00:03:41.423 --> 00:03:44.399
+Thanks for helping look after our groundwater.

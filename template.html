@@ -268,6 +268,22 @@
 
     /* Get the app */
     .stores { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
+
+    /* Tutorial gallery — self-hosted video, no third-party player. */
+    .tuts {
+      display: grid; gap: 26px; margin-top: 34px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+    .tut { margin: 0; background: var(--card); border-radius: 14px; overflow: hidden;
+           border: 1px solid var(--line); display: flex; flex-direction: column; }
+    .tut video { width: 100%; aspect-ratio: 16 / 9; display: block; background: #000; }
+    .tut figcaption { padding: 16px 18px 20px; }
+    .tut h3 { margin: 0 0 6px; font-size: 1.02rem; display: flex; gap: 10px;
+              align-items: baseline; justify-content: space-between; }
+    .tut .dur { font-size: .78rem; color: var(--muted); font-variant-numeric: tabular-nums;
+                flex: none; }
+    .tut p { margin: 0; font-size: .9rem; color: var(--muted); line-height: 1.5; }
+
     .store-badge {
       display: flex; align-items: center; gap: 12px;
       background: #111; color: #fff; text-decoration: none;
@@ -507,6 +523,14 @@
           <p style="text-align:center; margin-top:28px;">
             <a class="btn btn-primary" href="@@APP_URL@@/register">Start with step 1 — it's free</a>
           </p>
+
+          <div id="tutorials" style="margin-top:64px;">
+            <h2>@@TUTORIALS_TITLE@@</h2>
+            <p class="section-sub">@@TUTORIALS_SUB@@</p>
+            <div class="tuts">
+@@TUTORIALS@@
+            </div>
+          </div>
         </div>
       </section>
     </div>
