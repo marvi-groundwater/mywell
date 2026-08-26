@@ -120,73 +120,73 @@
       {
         "title": "Create your account",
         "text": "Start here. We fill the sign-up form in together — your name, country, choosing a username, and a password that will hold — then sign in with it.",
-        "duration": "3:06",
-        "src": "https://app.mywell.au/tutorials/01-getting-started.mp4",
-        "poster": "https://app.mywell.au/tutorials/01-getting-started.jpg",
+        "duration": "3:25",
+        "src": "https://app.mywell.au/tutorials/01-getting-started.mp4?v=2",
+        "poster": "https://app.mywell.au/tutorials/01-getting-started.jpg?v=2",
         "captions": "assets/captions/01-getting-started.vtt"
       },
       {
         "title": "Your Home screen",
         "text": "What you see every time you open MyWell: your stations at a glance, your own map, the record-a-reading shortcut and your recent activity.",
         "duration": "2:13",
-        "src": "https://app.mywell.au/tutorials/02-home.mp4",
-        "poster": "https://app.mywell.au/tutorials/02-home.jpg",
+        "src": "https://app.mywell.au/tutorials/02-home.mp4?v=2",
+        "poster": "https://app.mywell.au/tutorials/02-home.jpg?v=2",
         "captions": "assets/captions/02-home.vtt"
       },
       {
         "title": "Add and manage your stations",
         "text": "Register the wells, rain gauges, dams and springs you look after, and keep the list tidy as it grows.",
         "duration": "1:26",
-        "src": "https://app.mywell.au/tutorials/03-my-stations.mp4",
-        "poster": "https://app.mywell.au/tutorials/03-my-stations.jpg",
+        "src": "https://app.mywell.au/tutorials/03-my-stations.mp4?v=2",
+        "poster": "https://app.mywell.au/tutorials/03-my-stations.jpg?v=2",
         "captions": "assets/captions/03-my-stations.vtt"
       },
       {
         "title": "Record a reading",
         "text": "A complete visit from start to save — choosing the station, entering water level or quality, adding a photo, and saving it.",
         "duration": "2:26",
-        "src": "https://app.mywell.au/tutorials/04-record-a-reading.mp4",
-        "poster": "https://app.mywell.au/tutorials/04-record-a-reading.jpg",
+        "src": "https://app.mywell.au/tutorials/04-record-a-reading.mp4?v=2",
+        "poster": "https://app.mywell.au/tutorials/04-record-a-reading.jpg?v=2",
         "captions": "assets/captions/04-record-a-reading.vtt"
       },
       {
         "title": "Find stations on the map",
         "text": "Both maps explained: your own station map and the all-stations map, with the area and station-type filters.",
-        "duration": "2:36",
-        "src": "https://app.mywell.au/tutorials/05-maps.mp4",
-        "poster": "https://app.mywell.au/tutorials/05-maps.jpg",
+        "duration": "2:38",
+        "src": "https://app.mywell.au/tutorials/05-maps.mp4?v=2",
+        "poster": "https://app.mywell.au/tutorials/05-maps.jpg?v=2",
         "captions": "assets/captions/05-maps.vtt"
       },
       {
         "title": "Areas, trends and statistics",
         "text": "Read the shared dataset: pick a monitoring area, then read its water-level trend chart and its summary statistics.",
         "duration": "3:44",
-        "src": "https://app.mywell.au/tutorials/06-data-trend.mp4",
-        "poster": "https://app.mywell.au/tutorials/06-data-trend.jpg",
+        "src": "https://app.mywell.au/tutorials/06-data-trend.mp4?v=2",
+        "poster": "https://app.mywell.au/tutorials/06-data-trend.jpg?v=2",
         "captions": "assets/captions/06-data-trend.vtt"
       },
       {
         "title": "Build your own chart",
         "text": "The chart builder — add data series, pick stations and data types, set the time range, and save a view to come back to.",
         "duration": "2:57",
-        "src": "https://app.mywell.au/tutorials/07-advanced-trend.mp4",
-        "poster": "https://app.mywell.au/tutorials/07-advanced-trend.jpg",
+        "src": "https://app.mywell.au/tutorials/07-advanced-trend.mp4?v=2",
+        "poster": "https://app.mywell.au/tutorials/07-advanced-trend.jpg?v=2",
         "captions": "assets/captions/07-advanced-trend.vtt"
       },
       {
         "title": "Weather and rainfall",
         "text": "Rain is where groundwater comes from. The Weather page puts the forecast beside the wells it will feed.",
         "duration": "1:16",
-        "src": "https://app.mywell.au/tutorials/09-weather.mp4",
-        "poster": "https://app.mywell.au/tutorials/09-weather.jpg",
+        "src": "https://app.mywell.au/tutorials/09-weather.mp4?v=2",
+        "poster": "https://app.mywell.au/tutorials/09-weather.jpg?v=2",
         "captions": "assets/captions/09-weather.vtt"
       },
       {
         "title": "Settings and your language",
         "text": "Make MyWell yours: switch between sixty-one languages, change the display and theme, and replay any part of the built-in tutorial.",
         "duration": "1:27",
-        "src": "https://app.mywell.au/tutorials/08-settings-and-language.mp4",
-        "poster": "https://app.mywell.au/tutorials/08-settings-and-language.jpg",
+        "src": "https://app.mywell.au/tutorials/08-settings-and-language.mp4?v=2",
+        "poster": "https://app.mywell.au/tutorials/08-settings-and-language.jpg?v=2",
         "captions": "assets/captions/08-settings-and-language.vtt"
       }
     ]
