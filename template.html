@@ -388,6 +388,7 @@
         <a class="tab-link" href="#home">Overview</a>
         <a class="tab-link" href="#features">Features</a>
         <a class="tab-link" href="#how-it-works">How it works</a>
+        <a class="tab-link" href="#tutorials">Tutorials</a>
         <a class="tab-link" href="#data">Data</a>
         <a class="tab-link" href="#faq">FAQ</a>
       </nav>
@@ -524,13 +525,26 @@
             <a class="btn btn-primary" href="@@APP_URL@@/register">Start with step 1 — it's free</a>
           </p>
 
-          <div id="tutorials" style="margin-top:64px;">
-            <h2>@@TUTORIALS_TITLE@@</h2>
-            <p class="section-sub">@@TUTORIALS_SUB@@</p>
-            <div class="tuts">
+          <p style="text-align:center; margin-top:18px;">
+            <a class="tab-link" href="#tutorials"
+               style="border:2px solid var(--brand); font-weight:600;">Watch the tutorials →</a>
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ── Tutorials ────────────────────────────────────────────── -->
+    <div class="panel" id="panel-tutorials">
+      <section>
+        <div class="wrap">
+          <h2>@@TUTORIALS_TITLE@@</h2>
+          <p class="section-sub">@@TUTORIALS_SUB@@</p>
+          <div class="tuts">
 @@TUTORIALS@@
-            </div>
           </div>
+          <p style="text-align:center; margin-top:36px;">
+            <a class="btn btn-primary" href="@@APP_URL@@/register">Create your free account</a>
+          </p>
         </div>
       </section>
     </div>
@@ -700,11 +714,11 @@
       bar.classList.add("show");
     })();
 
-    // Tab router: #home / #features / #how-it-works / #data / #faq map to
+    // Tab router: #home / #features / #how-it-works / #tutorials / #data / #faq map to
     // panels; anything else (e.g. #get-the-app) falls back to the Overview
     // panel and then scrolls to the matching in-panel anchor if one exists.
     (function () {
-      var TABS = ["home", "features", "how-it-works", "data", "faq"];
+      var TABS = ["home", "features", "how-it-works", "tutorials", "data", "faq"];
       function show() {
         var hash = (location.hash || "#home").slice(1);
         var tab = TABS.indexOf(hash) !== -1 ? hash : "home";
@@ -734,7 +748,7 @@
             if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
           });
         }, { threshold: 0.15 });
-        document.querySelectorAll(".feature, .step, .dataset, .stat, .shot, .faq details").forEach(function (el, i) {
+        document.querySelectorAll(".feature, .step, .tut, .dataset, .stat, .shot, .faq details").forEach(function (el, i) {
           el.classList.add("reveal");
           el.style.transitionDelay = (i % 4) * 60 + "ms";
           io.observe(el);
