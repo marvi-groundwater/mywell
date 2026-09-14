@@ -9,7 +9,7 @@
     "title": "Water, made visible for your community",
     "highlight": "visible",
     "tagline": "MyWell is a free, community-focused water monitoring and learning app, built on the MARVI approach to participatory groundwater management. Record readings from wells, rain gauges and other local water sources — then see them on a map and watch the trends.",
-    "note": "Works in your browser, on iPhone and on Android.",
+    "note": "MyWell is free on Google Play and the App Store. Prefer not to install? The web app has every feature too.",
     "image": "assets/screenshots/home.jpg"
   },
   "stats": [
@@ -215,8 +215,7 @@
   ],
   "store": {
     "playUrl": "https://play.google.com/store/apps/details?id=org.marvi.mywell",
-    "iosUrl": "https://apps.apple.com/app/id6783644298",
-    "note": "MyWell is free on Google Play and the App Store. Prefer not to install? The web app has every feature too."
+    "iosUrl": "https://apps.apple.com/app/id6783644298"
   },
   "faq": [
     {

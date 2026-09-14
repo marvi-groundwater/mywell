@@ -65,7 +65,7 @@ collections:
                 required: false
                 hint: "This part of the headline gets the blue-to-teal water gradient. Must appear in the headline word-for-word."
               - { label: "Tagline", name: "tagline", widget: "text" }
-              - { label: "Small note under the buttons", name: "note", widget: "string" }
+              - { label: "Small note under the store badges", name: "note", widget: "string" }
               - { label: "Phone screenshot", name: "image", widget: "image" }
 
           - label: "Stat cards"
@@ -113,7 +113,7 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Text", name: "text", widget: "text" }
 
-          - label: "App store links (header buttons + badges)"
+          - label: "App store links (hero download badges)"
             name: "store"
             widget: "object"
             collapsed: false
@@ -122,13 +122,12 @@ collections:
                 name: "playUrl"
                 widget: "string"
                 required: false
-                hint: "Drives the download buttons in the hero and under “Get the app”. Leave empty to show “Coming soon” (opens a tester-invite email). Paste the Play listing URL on launch day."
+                hint: "Drives the Google Play badge in the hero. Leave empty to show “Coming soon” (opens a tester-invite email). Paste the Play listing URL on launch day."
               - label: "App Store listing URL"
                 name: "iosUrl"
                 widget: "string"
                 required: false
-                hint: "Drives the download buttons in the hero and under “Get the app”. Leave empty to show “Coming soon” (opens a TestFlight-invite email)."
-              - { label: "Note under the badges", name: "note", widget: "text" }
+                hint: "Drives the App Store badge in the hero. Leave empty to show “Coming soon” (opens a TestFlight-invite email)."
 
           - label: "FAQ"
             name: "faq"

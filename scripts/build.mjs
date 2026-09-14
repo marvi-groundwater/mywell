@@ -151,7 +151,6 @@ const slots = {
     badge(APPLE_ICON, "iPhone · App Store", content.store.iosUrl,
       `mailto:${email}?subject=MyWell%20iOS%20TestFlight%20invite`),
   ].join("\n"),
-  STORE_NOTE: esc(content.store.note),
   AUDIENCE: esc(content.audience),
   CTA_TITLE: esc(content.cta.title),
   CTA_SUB: esc(content.cta.subtitle),
