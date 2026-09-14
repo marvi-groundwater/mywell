@@ -109,17 +109,6 @@ function badge(icon, platformLine, url, comingSoonHref) {
             </a>`;
 }
 
-// The same switch, shrunk for the sticky header: icon + one-word platform,
-// so the store links are reachable before any scrolling.
-function headerChip(icon, platform, url, comingSoonHref) {
-  const live = typeof url === "string" && url.startsWith("https://");
-  const label = live ? `Get MyWell for ${platform}` : `MyWell for ${platform} — coming soon`;
-  return `        <a class="store-chip" href="${esc(live ? url : comingSoonHref)}" aria-label="${esc(label)}" title="${esc(label)}">
-          ${icon}
-          <span>${esc(platform)}</span>
-        </a>`;
-}
-
 const email = content.app.contactEmail;
 const appUrl = String(content.app.url).replace(/\/+$/, "");
 // The smart bar's not-installed fallbacks: Android prefers the Play listing
@@ -156,12 +145,6 @@ const slots = {
   TUTORIALS_SUB: esc(content.tutorials?.subtitle ?? ""),
   DATASETS: content.datasets.map(dataset).join("\n"),
   FAQ: content.faq.map(faq).join("\n"),
-  HEADER_STORES: [
-    headerChip(ANDROID_ICON, "Android", content.store.playUrl,
-      `mailto:${email}?subject=MyWell%20Android%20tester%20invite`),
-    headerChip(APPLE_ICON, "iPhone", content.store.iosUrl,
-      `mailto:${email}?subject=MyWell%20iOS%20TestFlight%20invite`),
-  ].join("\n"),
   STORE_BADGES: [
     badge(ANDROID_ICON, "Android · Google Play", content.store.playUrl,
       `mailto:${email}?subject=MyWell%20Android%20tester%20invite`),

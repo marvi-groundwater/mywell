@@ -122,12 +122,12 @@ collections:
                 name: "playUrl"
                 widget: "string"
                 required: false
-                hint: "Drives both the download button in the header and the badge under “Get the app”. Leave empty to show “Coming soon” (opens a tester-invite email). Paste the Play listing URL on launch day."
+                hint: "Drives the download buttons in the hero and under “Get the app”. Leave empty to show “Coming soon” (opens a tester-invite email). Paste the Play listing URL on launch day."
               - label: "App Store listing URL"
                 name: "iosUrl"
                 widget: "string"
                 required: false
-                hint: "Drives both the download button in the header and the badge under “Get the app”. Leave empty to show “Coming soon” (opens a TestFlight-invite email)."
+                hint: "Drives the download buttons in the hero and under “Get the app”. Leave empty to show “Coming soon” (opens a TestFlight-invite email)."
               - { label: "Note under the badges", name: "note", widget: "text" }
 
           - label: "FAQ"
