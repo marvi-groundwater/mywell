@@ -210,9 +210,22 @@
     }
     .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
     .hero-note { margin-top: 14px; font-size: .9rem; color: var(--muted); }
+
+    /* The install buttons, full size, in the hero — the download route is the
+       first thing on the page rather than something you scroll to find. Same
+       .store-badge component as "Get the app", scaled up and left-aligned to
+       the hero copy (it centres with the rest of the column below 800px). */
+    .hero-stores {
+      justify-content: flex-start; gap: 14px; margin: 20px 0 0;
+    }
+    .hero-stores .store-badge { padding: 13px 22px; min-width: 238px; }
+    .hero-stores .store-badge svg { width: 32px; height: 32px; }
+    .hero-stores .store-badge .big { font-size: 1.12rem; }
+
     @media (max-width: 800px) {
       .hero-grid { grid-template-columns: 1fr; text-align: center; }
       .hero-ctas { justify-content: center; }
+      .hero-stores { justify-content: center; }
     }
 
     /* Phone-framed app screenshots */
@@ -469,6 +482,9 @@
               <div class="hero-ctas">
                 <a class="btn btn-primary" href="@@APP_URL@@/register">Create a free account</a>
                 <a class="btn btn-outline" href="@@APP_URL@@/login">Sign in to the web app</a>
+              </div>
+              <div class="stores hero-stores">
+@@STORE_BADGES@@
               </div>
               <p class="hero-note">@@HERO_NOTE@@</p>
             </div>
