@@ -1,108 +1,100 @@
 WEBVTT
 
-1
-00:00:00.250 --> 00:00:03.418
+00:00.250 --> 00:03.418
 Water is connected across whole landscapes.
 
-2
-00:00:03.538 --> 00:00:08.458
+00:03.538 --> 00:08.458
 In this tutorial, you will learn how to use
 the map widgets to filter stations,
 
-3
-00:00:08.578 --> 00:00:13.114
+00:08.578 --> 00:13.114
 search by place or coordinates, and build
 custom monitoring areas.
 
-4
-00:00:13.917 --> 00:00:16.557
+00:13.917 --> 00:16.557
 This is the MyWell map workspace.
 
-5
-00:00:16.677 --> 00:00:23.445
+00:16.677 --> 00:23.445
 Floating filter chips across the top let you explore and refine
 the monitoring network without covering your view of the map.
 
-6
-00:00:24.250 --> 00:00:30.754
+00:24.250 --> 00:30.754
 The Scope chip switches between My stations — the
 wells and rain gauges you manage — and All stations,
 
-7
-00:00:30.874 --> 00:00:35.338
+00:30.874 --> 00:35.338
 which reveals every shared public monitoring
 station across the region.
 
-8
-00:00:36.150 --> 00:00:43.926
+00:36.150 --> 00:41.238
+Selecting My stations frames the map directly
+around your local monitoring network.
+
+00:42.050 --> 00:49.826
 The Type filter lets you focus on specific water sources:
 open wells, borewells, rain gauges, check dams,
 
-9
-00:00:44.046 --> 00:00:46.542
+00:49.946 --> 00:52.442
 rivers, and storage tanks.
 
-10
-00:00:46.662 --> 00:00:49.806
+00:52.562 --> 00:55.706
 Each source type has a unique icon and colour.
 
-11
-00:00:50.617 --> 00:00:56.281
+00:56.517 --> 01:02.181
 The Distance widget filters stations within a set
 radius from your location or a chosen point.
 
-12
-00:00:56.401 --> 00:01:03.313
+01:02.301 --> 01:09.213
 Pick a quick shortcut or slide to see all stations
 within two, five, ten, or twenty kilometres.
 
-13
-00:01:04.117 --> 00:01:10.045
+01:10.017 --> 01:15.945
 The search bar lets you find stations by name
 or code, locate villages and places,
 
-14
-00:01:10.165 --> 00:01:15.061
+01:16.065 --> 01:20.961
 or jump directly to exact GPS latitude and
 longitude coordinates.
 
-15
-00:01:15.883 --> 00:01:19.579
+01:21.783 --> 01:25.479
 Under Actions, select Create monitoring area.
 
-16
-00:01:19.699 --> 00:01:24.859
+01:25.599 --> 01:30.759
 This arms the area tool so you can group
 neighbouring stations into a named cluster —
 
-17
-00:01:24.979 --> 00:01:29.515
+01:30.879 --> 01:35.415
 such as a village boundary, micro-catchment,
 or local network.
 
-18
-00:01:30.317 --> 00:01:36.005
-Once you select your stations or apply a
-radius, name your monitoring area and save it.
+01:36.217 --> 01:42.457
+Once armed, the action banner gives you tools to
+pick stations individually, draw a boundary box,
 
-19
-00:01:36.125 --> 00:01:39.125
-Your area is stored under your account,
+01:42.577 --> 01:45.601
+or capture every station in a radius.
 
-20
-00:01:39.245 --> 00:01:43.949
-and you can re-open it any time to view
-combined trends and statistics.
+01:46.417 --> 01:52.513
+Click Save, then type a descriptive name for your
+monitoring area — such as Badgaon Catchment —
 
-21
-00:01:44.750 --> 00:01:46.694
+01:52.633 --> 01:54.505
+and save it.
+
+01:55.317 --> 01:58.557
+Your monitoring area is saved under your
+account.
+
+01:58.677 --> 02:04.989
+You can re-open it at any time from the Scope menu to
+follow community water trends and summary statistics.
+
+02:05.817 --> 02:07.761
 That is the whole page.
 
-22
-00:01:46.814 --> 00:01:51.470
+02:07.881 --> 02:12.537
 You can replay this tutorial any time from the
 Learning page inside the app.
 
-23
-00:01:51.590 --> 00:01:54.254
+02:12.657 --> 02:15.321
 Thanks for helping look after our water.

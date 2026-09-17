@@ -1,197 +1,153 @@
 WEBVTT
 
-1
-00:00:00.250 --> 00:00:03.154
+00:00.250 --> 00:03.154
 The Advanced trend page is the powerful one.
 
-2
-00:00:03.274 --> 00:00:09.634
+00:03.274 --> 00:09.634
 Instead of a chart somebody else designed, you build
 your own — one line per station, per data type,
 
-3
-00:00:09.754 --> 00:00:11.962
+00:09.754 --> 00:11.962
 over any period you like.
 
-4
-00:00:12.783 --> 00:00:15.591
+00:12.783 --> 00:15.591
 Now we're on: Advanced trend.
 
-5
-00:00:15.711 --> 00:00:18.783
+00:15.711 --> 00:18.783
 The most powerful view — a chart builder.
 
-6
-00:00:18.903 --> 00:00:24.351
+00:18.903 --> 00:24.351
 Add one or more data series, choose what each
 one plots, and compare stations,
 
-7
-00:00:24.471 --> 00:00:27.399
+00:24.471 --> 00:27.399
 areas and measurements side by side.
 
-8
-00:00:28.217 --> 00:00:29.993
+00:28.217 --> 00:29.969
 Compare more data.
 
-9
-00:00:30.113 --> 00:00:36.377
+00:30.089 --> 00:36.353
 Add another data series (up to 12) to compare
 stations or data types side by side.
 
-10
-00:00:36.497 --> 00:00:39.905
+00:36.473 --> 00:39.881
 Each series gets its own colour in the chart
 legend.
 
-11
-00:00:40.717 --> 00:00:42.493
+00:40.683 --> 00:42.291
 Pick what to plot.
 
-12
-00:00:42.613 --> 00:00:45.469
+00:42.411 --> 00:45.267
 Every row here is one data series.
 
-13
-00:00:45.589 --> 00:00:51.349
+00:45.387 --> 00:51.147
 Its first choice is where the data comes from:
 a single station, or a whole Monitoring Area —
 
-14
-00:00:51.469 --> 00:00:56.149
+00:51.267 --> 00:55.947
 like the built-in Example area — which plots
 several stations at once.
 
-15
-00:00:56.950 --> 00:00:58.918
+00:56.750 --> 00:58.718
 Choose a data type.
 
-16
-00:00:59.038 --> 00:01:04.006
+00:58.838 --> 01:03.806
 Only data types this station has actually
 recorded are offered, with their unit.
 
-17
-00:01:04.126 --> 00:01:07.102
+01:03.926 --> 01:06.902
 The chart redraws as soon as you change it.
 
-18
-00:01:07.917 --> 00:01:09.741
+01:07.717 --> 01:09.541
 Choose a chart type.
 
-19
-00:01:09.861 --> 00:01:13.221
+01:09.661 --> 01:13.021
 Time series is the classic value-over-time
 view.
 
-20
-00:01:13.341 --> 00:01:20.205
+01:13.141 --> 01:20.005
 You can also show this series as a 3D time series, a
 heatmap, a scatter plot, or a distribution.
 
-21
-00:01:21.017 --> 00:01:23.249
+01:20.817 --> 01:23.049
 Focus on a time period.
 
-22
-00:01:23.369 --> 00:01:26.585
+01:23.169 --> 01:26.385
 Drag the two handles to narrow the time
 window.
 
-23
-00:01:26.705 --> 00:01:30.569
+01:26.505 --> 01:30.369
 It applies to every series and sets the
 chart's x-axis.
 
-24
-00:01:31.383 --> 00:01:33.615
+01:31.183 --> 01:33.415
 Open the advanced options.
 
-25
-00:01:33.735 --> 00:01:39.903
+01:33.535 --> 01:39.703
 This little summary shows how a series is
 drawn (interval · axis · chart number).
 
-26
-00:01:40.023 --> 00:01:45.327
+01:39.823 --> 01:45.127
 Click it to open the drawer with the advanced
 controls — the next two tips look inside.
 
-27
-00:01:46.150 --> 00:01:49.486
+01:45.950 --> 01:49.286
 Draw: style, chart & axis.
 
-28
-00:01:49.606 --> 00:01:53.422
+01:49.406 --> 01:53.222
 Show as switches between line, bar and area.
 
-29
-00:01:53.542 --> 00:01:57.190
+01:53.342 --> 01:56.990
 Chart moves the series onto its own numbered
 chart below.
 
-30
-00:01:57.310 --> 00:02:02.950
+01:57.110 --> 02:02.750
 Axis puts it on the left or right scale —
 useful when two series use different units.
 
-31
-00:02:03.783 --> 00:02:06.111
+02:03.583 --> 02:05.911
 Transform & normalize.
 
-32
-00:02:06.231 --> 00:02:13.047
+02:06.031 --> 02:12.847
 Interval buckets readings by day, week, month
 or year, and Aggregate picks how they combine.
 
-33
-00:02:13.167 --> 00:02:16.263
+02:12.967 --> 02:16.063
 Transform can smooth or clip outliers,
 
-34
-00:02:16.383 --> 00:02:23.415
+02:16.183 --> 02:23.215
 and Normalize rescales values (for example to
 0–1) so different units fit on one chart.
 
-35
-00:02:24.217 --> 00:02:25.993
+02:24.017 --> 02:25.625
 Read your chart.
 
-36
-00:02:26.113 --> 00:02:27.961
+02:25.745 --> 02:27.593
 The result draws here.
 
-37
-00:02:28.081 --> 00:02:34.681
+02:27.713 --> 02:34.313
 Drag the small slider under the chart to zoom into a
 period, and use the legend to tell the series apart.
 
-38
-00:02:35.483 --> 00:02:37.259
+02:35.117 --> 02:36.845
 Save your view.
 
-39
-00:02:37.379 --> 00:02:39.155
+02:36.965 --> 02:38.693
 Happy with a chart?
 
-40
-00:02:39.275 --> 00:02:43.691
+02:38.813 --> 02:43.229
 Save it as a named view and load it again any
 time from this menu.
 
-41
-00:02:43.811 --> 00:02:46.259
+02:43.349 --> 02:45.797
 Set default ★ marks your favourite.
 
-42
-00:02:47.083 --> 00:02:49.027
+02:46.617 --> 02:48.561
 That is the whole page.
 
-43
-00:02:49.147 --> 00:02:53.803
+02:48.681 --> 02:53.337
 You can replay this tutorial any time from the
 Learning page inside the app.
 
-44
-00:02:53.923 --> 00:02:56.587
+02:53.457 --> 02:56.121
 Thanks for helping look after our water.
