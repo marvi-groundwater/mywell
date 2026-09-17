@@ -169,5 +169,7 @@ cpSync(join(ROOT, "content"), join(OUT, "content"), { recursive: true });
 // The QR landing page (/get) — a static page with no content tokens, so it
 // is copied rather than rendered.
 cpSync(join(ROOT, "get"), join(OUT, "get"), { recursive: true });
+// The station QR landing page (/s?id=…) — same reason, copied not rendered.
+cpSync(join(ROOT, "s"), join(OUT, "s"), { recursive: true });
 writeFileSync(join(OUT, ".nojekyll"), "");
 console.log("built _site/");

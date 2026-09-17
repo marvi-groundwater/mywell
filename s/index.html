@@ -1,0 +1,113 @@
+<!doctype html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Open this station in MyWell</title>
+<meta name="robots" content="noindex" />
+<!--
+  Where a station's QR code lands.
+
+  WHY THIS PAGE EXISTS AT ALL, rather than the code pointing straight at the
+  app: iOS does NOT fire a universal link from a Camera scan. A scanned URL is
+  treated like a typed one and handed to Safari, so pointing the QR directly at
+  app.mywell.au opened the website and asked for a login — on a phone with the
+  app already installed and signed in (user, 2026-09-17).
+
+  Universal links DO fire from a tap on a link, so this page's only job is to
+  turn the scan into a tap.
+
+  AND IT HAS TO LIVE ON A DIFFERENT DOMAIN than the app. iOS deliberately does
+  not hand a link to the app when you are already browsing that same domain —
+  it reads as in-site navigation. So this sits on mywell.au and points at
+  app.mywell.au, and the domain boundary is what makes the hand-off work.
+
+  The target is /map?focus=<id>: the map with that station's card open, which is
+  what someone standing at the well head wants to see. /resources/<id> is behind
+  the login shell and was the other half of the reported problem.
+-->
+<style>
+  :root {
+    color-scheme: light dark;
+    --ink: #0F2A33; --muted: #4A6470; --teal: #0E7C7B;
+    --card: #FFF; --page: #EFF4F5; --line: rgba(15,42,51,.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#E4E9F0; --muted:#A7B4BD; --card:#1B2229; --page:#12171C; --line:rgba(228,233,240,.16); }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; min-height:100dvh; display:grid; place-items:center;
+    padding:24px max(16px, env(safe-area-inset-left)) calc(24px + env(safe-area-inset-bottom));
+    background:var(--page); color:var(--ink);
+    font:16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .card {
+    width:min(420px,100%); background:var(--card); border:1px solid var(--line);
+    border-radius:18px; padding:28px 24px; text-align:center; box-shadow:0 8px 30px rgba(8,30,38,.10);
+  }
+  .mark { width:56px; height:56px; margin:0 auto; border-radius:16px; display:grid; place-items:center;
+          background:linear-gradient(140deg,#0E7C7B,#1AA7A0); color:#fff; font-size:26px; }
+  h1 { margin:14px 0 4px; font-size:21px; letter-spacing:-.01em; }
+  p  { margin:0 0 20px; color:var(--muted); font-size:14.5px; }
+  a.btn { display:block; padding:14px 18px; border-radius:12px; text-decoration:none;
+          font-weight:700; font-size:15px; margin-bottom:10px; background:var(--teal); color:#fff; }
+  a.alt { background:transparent; color:var(--teal); border:1px solid var(--line); font-weight:600; }
+  .note { font-size:12.5px; color:var(--muted); margin:14px 0 0; }
+</style>
+
+<div class="card">
+  <div class="mark" aria-hidden="true">💧</div>
+  <h1>MyWell station</h1>
+  <p id="lead">Choose how to open it.</p>
+  <a class="btn" id="open" href="https://app.mywell.au/map">Open in the MyWell app</a>
+  <a class="alt btn" id="store" href="https://mywell.au/get">Don’t have the app? Install it</a>
+  <p class="note" id="note"></p>
+</div>
+
+<script>
+  (function () {
+    var APP = "https://app.mywell.au";
+    var IOS_STORE = "https://apps.apple.com/app/id6783644298";
+    var PLAY_STORE = "https://play.google.com/store/apps/details?id=org.marvi.mywell";
+
+    // The station id, as the QR carries it. Digits only — this value goes into
+    // a URL, and a QR is an untrusted input like any other.
+    var raw = new URLSearchParams(location.search).get("id") || "";
+    var id = /^[0-9]{1,12}$/.test(raw) ? raw : "";
+
+    // The map, with this station's card open — the page someone standing at
+    // the well actually wants. Without a usable id, just the map.
+    var target = APP + "/map" + (id ? "?focus=" + id : "");
+
+    var ua = navigator.userAgent || "";
+    var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    var isAndroid = /Android/.test(ua);
+
+    var open = document.getElementById("open");
+    var store = document.getElementById("store");
+    var lead = document.getElementById("lead");
+    var note = document.getElementById("note");
+
+    open.href = target;
+
+    if (isIOS || isAndroid) {
+      // No auto-redirect on a phone, deliberately. The whole point of this page
+      // is that the hand-off needs a TAP: a scripted navigation to a universal
+      // link does not reliably hand over to the app, which is the bug this page
+      // exists to fix. So we ask.
+      lead.textContent = "Open this station in the app, or install it.";
+      store.href = isIOS ? IOS_STORE : PLAY_STORE;
+      store.textContent = isIOS ? "Don’t have it? Get it on the App Store"
+                                : "Don’t have it? Get it on Google Play";
+      note.textContent = "If MyWell is installed, the first button opens it straight at this station. " +
+        "If not, it opens the same page in your browser.";
+    } else {
+      // A computer has no app to hand off to, so there is nothing to ask.
+      lead.textContent = "Opening this station…";
+      store.href = "https://mywell.au/get";
+      store.textContent = "Get MyWell for your phone";
+      note.textContent = "Opening in your browser — MyWell needs no install on a computer.";
+      setTimeout(function () { window.location.replace(target); }, 700);
+    }
+  })();
+</script>
