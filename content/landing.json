@@ -115,12 +115,12 @@
   ],
   "tutorials": {
     "title": "Watch how it's done",
-    "subtitle": "Nine short tutorials, narrated, recorded from the real app. Start with the first one and you will have an account in about three minutes.",
+    "subtitle": "Eleven short tutorials, narrated, recorded from the real app. Start with the first one and you will have an account in about three minutes.",
     "items": [
       {
         "title": "Create your account",
         "text": "Start here. We fill the sign-up form in together — your name, country, choosing a username, and a password that will hold — then sign in with it.",
-        "duration": "3:25",
+        "duration": "3:26",
         "src": "https://app.mywell.au/tutorials/01-getting-started.mp4?v=2",
         "poster": "https://app.mywell.au/tutorials/01-getting-started.jpg?v=2",
         "captions": "assets/captions/01-getting-started.vtt"
@@ -128,9 +128,9 @@
       {
         "title": "Your Home screen",
         "text": "What you see every time you open MyWell: your stations at a glance, your own map, the record-a-reading shortcut and your recent activity.",
-        "duration": "2:13",
-        "src": "https://app.mywell.au/tutorials/02-home.mp4?v=2",
-        "poster": "https://app.mywell.au/tutorials/02-home.jpg?v=2",
+        "duration": "1:43",
+        "src": "https://app.mywell.au/tutorials/02-home.mp4?v=3",
+        "poster": "https://app.mywell.au/tutorials/02-home.jpg?v=3",
         "captions": "assets/captions/02-home.vtt"
       },
       {
@@ -144,7 +144,7 @@
       {
         "title": "Record a reading",
         "text": "A complete visit from start to save — choosing the station, entering water level or quality, adding a photo, and saving it.",
-        "duration": "2:26",
+        "duration": "2:27",
         "src": "https://app.mywell.au/tutorials/04-record-a-reading.mp4?v=2",
         "poster": "https://app.mywell.au/tutorials/04-record-a-reading.jpg?v=2",
         "captions": "assets/captions/04-record-a-reading.vtt"
@@ -152,7 +152,7 @@
       {
         "title": "Find stations on the map",
         "text": "Both maps explained: your own station map and the all-stations map, with the area and station-type filters.",
-        "duration": "2:38",
+        "duration": "1:48",
         "src": "https://app.mywell.au/tutorials/05-maps.mp4?v=2",
         "poster": "https://app.mywell.au/tutorials/05-maps.jpg?v=2",
         "captions": "assets/captions/05-maps.vtt"
@@ -160,7 +160,7 @@
       {
         "title": "Areas, trends and statistics",
         "text": "Read the shared dataset: pick a monitoring area, then read its water-level trend chart and its summary statistics.",
-        "duration": "3:44",
+        "duration": "2:18",
         "src": "https://app.mywell.au/tutorials/06-data-trend.mp4?v=2",
         "poster": "https://app.mywell.au/tutorials/06-data-trend.jpg?v=2",
         "captions": "assets/captions/06-data-trend.vtt"
@@ -188,6 +188,22 @@
         "src": "https://app.mywell.au/tutorials/08-settings-and-language.mp4?v=2",
         "poster": "https://app.mywell.au/tutorials/08-settings-and-language.jpg?v=2",
         "captions": "assets/captions/08-settings-and-language.vtt"
+      },
+      {
+        "title": "Easy vs Advanced view",
+        "text": "Choose what you see: a streamlined menu for daily field monitoring, or the full suite with community analytics, trends, and admin tools.",
+        "duration": "1:45",
+        "src": "https://app.mywell.au/tutorials/10-easy-vs-advanced.mp4?v=2",
+        "poster": "https://app.mywell.au/tutorials/10-easy-vs-advanced.jpg?v=2",
+        "captions": "assets/captions/10-easy-vs-advanced.vtt"
+      },
+      {
+        "title": "Map widgets & monitoring areas",
+        "text": "Search by place or GPS coordinates, use floating filter widgets for station type and radius, and build custom monitoring areas.",
+        "duration": "1:55",
+        "src": "https://app.mywell.au/tutorials/11-map-widgets-and-areas.mp4?v=2",
+        "poster": "https://app.mywell.au/tutorials/11-map-widgets-and-areas.jpg?v=2",
+        "captions": "assets/captions/11-map-widgets-and-areas.vtt"
       }
     ]
   },
