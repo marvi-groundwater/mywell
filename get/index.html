@@ -1,0 +1,123 @@
+<!doctype html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Get MyWell</title>
+<meta name="description" content="Open or install MyWell — groundwater monitoring for your village." />
+<meta name="robots" content="noindex" />
+<!--
+  The QR-code landing page. One printed code, three destinations.
+
+  WHY THE STORE IS THE AUTOMATIC DESTINATION, and not a "try the app first"
+  redirect: a web page cannot tell whether an app is installed. Both platforms
+  removed that capability on purpose, and the usual workaround — open the deep
+  link, then fall back to the store if the page is still here a second later —
+  cannot work for THIS app, because app.mywell.au is a verified universal link
+  AND a real website. With the app installed the OS opens it; without it, the
+  browser simply loads the web app, the page is gone, and the fallback never
+  runs. The user would silently never reach the store.
+
+  The store page, by contrast, IS the installed/not-installed router, and the
+  platform maintains it: the App Store and Play both show OPEN when the app is
+  present and GET/Install when it is not. So the automatic path goes there, and
+  "Already installed? Open it" sits underneath as a universal link for anyone
+  who would rather skip the store entirely.
+
+  Desktop and everything else goes straight to the web app, which needs no
+  install at all.
+-->
+<style>
+  :root {
+    color-scheme: light dark;
+    --ink: #0F2A33; --muted: #4A6470; --teal: #0E7C7B; --teal-ink: #fff;
+    --card: #FFFFFF; --page: #EFF4F5; --line: rgba(15, 42, 51, .12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #E4E9F0; --muted: #A7B4BD; --card: #1B2229; --page: #12171C; --line: rgba(228, 233, 240, .16); }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100dvh; display: grid; place-items: center;
+    padding: 24px max(16px, env(safe-area-inset-left)) calc(24px + env(safe-area-inset-bottom));
+    background: var(--page); color: var(--ink);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .card {
+    width: min(420px, 100%); background: var(--card); border: 1px solid var(--line);
+    border-radius: 18px; padding: 28px 24px; text-align: center;
+    box-shadow: 0 8px 30px rgba(8, 30, 38, .10);
+  }
+  h1 { margin: 14px 0 6px; font-size: 22px; letter-spacing: -.01em; }
+  p { margin: 0 0 20px; color: var(--muted); font-size: 14.5px; }
+  .mark {
+    width: 56px; height: 56px; margin: 0 auto; border-radius: 16px; display: grid; place-items: center;
+    background: linear-gradient(140deg, #0E7C7B, #1AA7A0); color: #fff; font-size: 26px;
+  }
+  a.btn {
+    display: block; padding: 14px 18px; border-radius: 12px; text-decoration: none;
+    font-weight: 700; font-size: 15px; margin-bottom: 10px;
+    background: var(--teal); color: var(--teal-ink);
+  }
+  a.alt { background: transparent; color: var(--teal); border: 1px solid var(--line); font-weight: 600; }
+  .note { font-size: 12.5px; color: var(--muted); margin: 14px 0 0; }
+  noscript p { color: var(--muted); }
+</style>
+
+<div class="card">
+  <div class="mark" aria-hidden="true">💧</div>
+  <h1>MyWell</h1>
+  <p id="lead">Taking you to the right place…</p>
+
+  <div id="actions">
+    <!-- Filled in by the script; these are the no-JS defaults. -->
+    <a class="btn" id="primary" href="https://app.mywell.au/">Open MyWell</a>
+    <a class="alt btn" id="secondary" href="https://app.mywell.au/">Use it in the browser</a>
+  </div>
+
+  <p class="note" id="note"></p>
+  <noscript><p>Choose the option that matches your device.</p></noscript>
+</div>
+
+<script>
+  (function () {
+    var IOS_APP = "https://apps.apple.com/app/id6783644298";
+    var PLAY_APP = "https://play.google.com/store/apps/details?id=org.marvi.mywell";
+    var WEB_APP = "https://app.mywell.au/";
+
+    var ua = navigator.userAgent || "";
+    // iPadOS 13+ reports itself as a Mac; the touch-point count is what still
+    // tells them apart.
+    var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    var isAndroid = /Android/.test(ua);
+
+    var lead = document.getElementById("lead");
+    var primary = document.getElementById("primary");
+    var secondary = document.getElementById("secondary");
+    var note = document.getElementById("note");
+
+    if (isIOS || isAndroid) {
+      var store = isIOS ? IOS_APP : PLAY_APP;
+      var storeName = isIOS ? "the App Store" : "Google Play";
+      lead.textContent = "Opening " + storeName + "…";
+      primary.href = store;
+      primary.textContent = isIOS ? "Get MyWell on the App Store" : "Get MyWell on Google Play";
+      secondary.href = WEB_APP;
+      secondary.textContent = "Already installed? Open it";
+      note.textContent = "If MyWell is already on this phone, " + storeName +
+        " will show Open instead of Install.";
+      // A beat, so the page is readable if the store is slow to take over, and
+      // so the back button lands somewhere that explains itself.
+      setTimeout(function () { window.location.replace(store); }, 900);
+    } else {
+      // Desktop, tablet-without-touch, anything else: the web app needs no
+      // install, so there is nothing to decide.
+      lead.textContent = "Opening the MyWell web app…";
+      primary.href = WEB_APP;
+      primary.textContent = "Open the MyWell web app";
+      secondary.href = IOS_APP;
+      secondary.textContent = "Get it for iPhone or Android";
+      note.textContent = "MyWell runs in any modern browser — no install needed.";
+      setTimeout(function () { window.location.replace(WEB_APP); }, 900);
+    }
+  })();
+</script>
