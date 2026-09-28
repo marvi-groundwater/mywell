@@ -9,9 +9,11 @@
 # simply stops saving, with no warning: issue a new one at
 # github.com/settings/personal-access-tokens and sign in again.
 #
-# Every field of content/landing.json is declared below — the CMS writes
-# exactly what this file describes, so an undeclared field would be silently
-# dropped on save. If you add a field to the JSON, add it here too.
+# Declare a content/landing.json field here to make it editable in the CMS.
+# An undeclared field is not lost: on save, Sveltia (0.178.0, vendored)
+# writes the declared fields first and then every other key it read, so
+# `tutorials`, which is edited in the JSON directly, survives CMS saves — it
+# just moves to the end of the file. Re-check if sveltia-cms.js is replaced.
 backend:
   name: github
   repo: marvi-groundwater/mywell
