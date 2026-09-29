@@ -5,8 +5,16 @@ water-monitoring app: a single static page, published on GitHub Pages, with
 its content managed through a git-based CMS — the same setup as the MARVI
 website.
 
-**Live site:** https://mywell.au/
-**Content admin (CMS):** https://mywell.au/admin/
+> **Now forwards to OurWater (2026-09-29).** MyWell's public page moved to
+> https://ourwater.org.au/ ([marvi-groundwater/OurWater](https://github.com/marvi-groundwater/OurWater)).
+> This site now publishes only `forward.html`, as both `index.html` and
+> `404.html`, so every mywell.au address, station QR links included, lands on
+> the same path at ourwater.org.au. The sources below are kept, unbuilt; to
+> restore the MyWell page, revert the "Build the forwarding site" step in
+> `.github/workflows/deploy.yml`.
+
+**Live site (until 2026-09-29):** https://mywell.au/
+**Content admin (CMS, no longer published):** https://mywell.au/admin/
 
 ## How it fits together
 

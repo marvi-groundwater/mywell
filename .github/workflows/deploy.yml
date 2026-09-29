@@ -27,15 +27,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Build static site
-        run: node scripts/build.mjs
-
-      - name: Verify built output
-        run: node scripts/verify.mjs
+      # MyWell's public page is now OurWater (ourwater.org.au). This site
+      # publishes only forward.html, as both the index and the 404 page, so
+      # every mywell.au address (a station QR's /s/?id=… included) forwards to
+      # the same path there. The site sources stay in the repo, unbuilt; to
+      # bring the MyWell page back, revert this step to build.mjs + verify.mjs.
+      - name: Build the forwarding site
+        run: |
+          mkdir -p _site
+          cp forward.html _site/index.html
+          cp forward.html _site/404.html
+          touch _site/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,0 +1,19 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>MyWell is now OurWater</title>
+<meta name="robots" content="noindex" />
+<link rel="canonical" href="https://ourwater.org.au/" />
+<!--
+  MyWell's public page is now OurWater, at ourwater.org.au. This site
+  publishes only this page, as both index.html and 404.html, so every
+  mywell.au address forwards to the same path there: a station QR's
+  /s/?id=…, the /get/ install page, and the app's /#tutorials link included.
+  The MyWell site sources stay in the repo, unbuilt, if it is ever needed back.
+-->
+<script>
+  location.replace("https://ourwater.org.au" +
+    location.pathname + location.search + location.hash);
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=https://ourwater.org.au/" /></noscript>
+<p>MyWell is now OurWater:
+  <a href="https://ourwater.org.au/">ourwater.org.au</a>.</p>
